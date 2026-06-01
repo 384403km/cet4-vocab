@@ -1,0 +1,3618 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>地月专属 · 四级冲刺词库四级冲刺词库</title>
+
+
+
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{min-height:100vh;background:#0a0a0f;font-family:serif;overflow-x:hidden;color:#e0dcd0;-webkit-font-smoothing:antialiased}
+:root{--bg:#0a0a0f;--surface:#14141e;--surface2:#1c1c2a;--text:#e0dcd0;--text2:#908a78;--df-red:#c62828;--fgo-gold:#d4a017;--fgo-blue:#1a237e;--dev-green:#00ff41;--mys-purple:#7b2d8e;--mys-accent:#bb86fc;--gl-pink:#ff6b9d;--gl-blue:#89cff0;--gl-accent:#ff4081;--bio-green:#4caf50;--bio-teal:#009688;--bio-accent:#a5d6a7}
+#load{position:fixed;inset:0;z-index:999;background:var(--bg);display:flex;align-items:center;justify-content:center;flex-direction:column;gap:24px;transition:opacity .6s}
+#load.hide{opacity:0;pointer-events:none}
+.load-ring{width:64px;height:64px;border:3px solid #2a2a3e;border-top-color:var(--dev-green);border-radius:50%;animation:spin 1s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+#landing{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:40px 20px}
+#landing .title{font-size:clamp(1.8rem,5vw,3.2rem);text-align:center;margin-bottom:8px}
+#landing .title span{display:block;font-size:clamp(.85rem,2vw,1.1rem);color:var(--text2);font-weight:400;margin-top:8px;letter-spacing:2px}
+#landing .title .em{color:var(--dev-green);font-family:monospace}
+.deck-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px;max-width:1080px;width:100%;margin-top:48px}
+.deck-card{position:relative;border-radius:16px;padding:32px 24px 24px;cursor:pointer;transition:all .4s cubic-bezier(.22,1,.36,1);overflow:hidden;border:1px solid transparent;min-height:200px;display:flex;flex-direction:column;justify-content:flex-end}.deck-card .bg-art{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-size:5rem;opacity:.04;z-index:0;pointer-events:none;transition:opacity .4s}.deck-card:hover .bg-art{opacity:.08}
+.deck-card:hover{transform:translateY(-8px) scale(1.02)}
+.deck-card .icon{font-size:2.4rem;margin-bottom:12px;position:relative;z-index:1}
+.deck-card h2{font-size:1.3rem;position:relative;z-index:1}
+.deck-card p{font-size:.8rem;color:var(--text2);margin-top:6px;position:relative;z-index:1}
+.deck-card .count{position:absolute;top:16px;right:20px;font-size:.75rem;opacity:.5;font-family:monospace}
+.df-theme{background:linear-gradient(145deg,#1a0a0a,#0d0505);border-color:#3a1515}
+.df-theme:hover{border-color:var(--df-red);box-shadow:0 12px 40px rgba(198,40,40,.2)}
+.df-theme .icon{color:var(--df-red)}
+.fgo-theme{background:linear-gradient(145deg,#0a0f2a,#05081a);border-color:#1a237e}
+.fgo-theme:hover{border-color:var(--fgo-gold);box-shadow:0 12px 40px rgba(212,160,23,.2)}
+.fgo-theme .icon{color:var(--fgo-gold)}
+.dev-theme{background:linear-gradient(145deg,#0d1117,#06090f);border-color:#1a2a1a}
+.dev-theme:hover{border-color:var(--dev-green);box-shadow:0 12px 40px rgba(0,255,65,.15)}
+.dev-theme .icon{color:var(--dev-green)}
+.mys-theme{background:linear-gradient(145deg,#120824,#080412);border-color:#2a1a3a}
+.mys-theme:hover{border-color:var(--mys-purple);box-shadow:0 12px 40px rgba(123,45,142,.25)}
+.mys-theme .icon{color:var(--mys-accent)}.gl-theme{background:linear-gradient(145deg,#1a0a14,#0f050d);border-color:#3a1520}.gl-theme:hover{border-color:var(--gl-pink);box-shadow:0 12px 40px rgba(255,107,157,.2)}.gl-theme .icon{color:var(--gl-pink)}.bio-theme{background:linear-gradient(145deg,#0a1a0f,#05100a);border-color:#153520}.bio-theme:hover{border-color:var(--bio-green);box-shadow:0 12px 40px rgba(76,175,80,.2)}.bio-theme .icon{color:var(--bio-green)}
+#game{display:none;min-height:100vh;padding:20px}
+#game.active{display:block}
+.game-header{display:flex;align-items:center;gap:16px;padding:16px 0;max-width:1080px;margin:0 auto 24px;border-bottom:1px solid rgba(255,255,255,.06);flex-wrap:wrap}
+.game-header .back{background:none;border:none;color:var(--text2);font-size:1.2rem;cursor:pointer;padding:8px;transition:color .3s;font-family:inherit}
+.game-header .back:hover{color:var(--text)}
+.game-header h1{font-size:1.4rem;flex:1}
+.game-header h1 small{display:block;font-size:.75rem;color:var(--text2);font-weight:400}
+.game-stats{display:flex;gap:16px;font-size:.8rem;font-family:monospace;color:var(--text2)}
+.filter-bar{display:flex;gap:8px;margin-bottom:24px;flex-wrap:wrap;max-width:1080px;margin:0 auto 24px}
+.filter-bar .tag{background:var(--surface);border:1px solid rgba(255,255,255,.08);border-radius:20px;padding:6px 16px;font-size:.78rem;cursor:pointer;transition:all .3s;color:var(--text2);font-family:inherit}
+.filter-bar .tag:hover{border-color:rgba(255,255,255,.2);color:var(--text)}
+.filter-bar .tag.active{background:var(--surface2);border-color:currentColor;color:var(--text)}
+.card-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:16px;max-width:1080px;margin:0 auto;perspective:1000px}
+.card-wrap{aspect-ratio:3/4;cursor:pointer;perspective:800px}
+.card-inner{position:relative;width:100%;height:100%;transition:transform .6s cubic-bezier(.22,1,.36,1);transform-style:preserve-3d}
+.card-wrap.flipped .card-inner{transform:rotateY(180deg)}.card-wrap.flipped .card-back .master-btn{display:inline-block!important}.card-wrap .card-back .master-btn{display:none!important}
+.card-front,.card-back{position:absolute;inset:0;border-radius:12px;backface-visibility:hidden;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:16px;text-align:center;border:1px solid rgba(255,255,255,.08);overflow:hidden}
+.card-front{background:var(--surface)}
+.card-front .art-bg{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-size:3.5rem;opacity:.06;pointer-events:none;z-index:0}.card-front .word{font-size:1.15rem;font-weight:700;letter-spacing:1px;margin-bottom:4px}
+.card-front .pos{font-size:.7rem;opacity:.5;font-family:monospace}
+.card-back{transform:rotateY(180deg);background:var(--surface2);gap:6px}
+.card-back .def{font-size:.85rem;line-height:1.5;color:var(--text)}
+.card-back .ex{font-size:.72rem;color:var(--text2);line-height:1.5;margin-top:4px;font-style:italic}
+.card-back .themed-tag{position:absolute;top:8px;right:10px;font-size:.6rem;padding:2px 8px;border-radius:10px;opacity:.7;font-family:monospace}
+.df-card .card-front{background:linear-gradient(180deg,#1a0808,#0f0404);border-color:#3a1515}
+.df-card .card-back{background:linear-gradient(180deg,#1a0a0a,#120606);border-color:#4a2020}
+.df-card .card-back .def{color:#ffaaaa}
+.df-card .themed-tag{background:rgba(198,40,40,.3);color:var(--df-red)}
+.fgo-card .card-front{background:linear-gradient(180deg,#0a0f2a,#05081a);border-color:#1a237e}
+.fgo-card .card-back{background:linear-gradient(180deg,#0c1230,#070a20);border-color:#2a307e}
+.fgo-card .card-back .def{color:#ffe082}
+.fgo-card .themed-tag{background:rgba(212,160,23,.25);color:var(--fgo-gold)}
+.dev-card .card-front{background:linear-gradient(180deg,#0d1117,#080b10);border-color:#1a2a1a}
+.dev-card .card-back{background:linear-gradient(180deg,#0f1419,#090c12);border-color:#2a3a2a}
+.dev-card .card-back .def{color:#7affa0}
+.dev-card .themed-tag{background:rgba(0,255,65,.15);color:var(--dev-green)}
+.mys-card .card-front{background:linear-gradient(180deg,#120824,#0a0418);border-color:#2a1a3a}
+.mys-card .card-back{background:linear-gradient(180deg,#140a28,#0c051e);border-color:#3a2a4a}
+.mys-card .card-back .def{color:#d0a0ff}
+.mys-card .themed-tag{background:rgba(123,45,142,.3);color:var(--mys-accent)}.gl-card .card-front{background:linear-gradient(180deg,#1a0a14,#120812);border-color:#3a1520}.gl-card .card-back{background:linear-gradient(180deg,#1c0c16,#140a12);border-color:#4a2030}.gl-card .card-back .def{color:#ffb0c8}.gl-card .themed-tag{background:rgba(255,107,157,.2);color:var(--gl-pink)}.bio-card .card-front{background:linear-gradient(180deg,#0a1a0f,#07120a);border-color:#153520}.bio-card .card-back{background:linear-gradient(180deg,#0c1c11,#08140c);border-color:#254530}.bio-card .card-back .def{color:#a5d6a7}.bio-card .themed-tag{background:rgba(76,175,80,.2);color:var(--bio-green)}
+#quiz{display:none;min-height:100vh;padding:20px}
+#quiz.active{display:block}
+.quiz-box{max-width:640px;margin:80px auto;background:var(--surface);border-radius:20px;padding:48px 32px;text-align:center;border:1px solid rgba(255,255,255,.06)}
+.quiz-box .q-word{font-size:2rem;font-weight:700;margin-bottom:16px}
+.quiz-box .q-pos{font-size:.8rem;color:var(--text2);margin-bottom:32px;font-family:monospace}
+.quiz-options{display:grid;grid-template-columns:1fr 1fr;gap:12px;max-width:480px;margin:0 auto}
+.quiz-options button{background:var(--surface2);border:1px solid rgba(255,255,255,.08);border-radius:12px;padding:16px;font-size:.85rem;color:var(--text);cursor:pointer;transition:all .3s;font-family:inherit;text-align:left;line-height:1.4}
+.quiz-options button:hover{border-color:rgba(255,255,255,.2);transform:translateY(-2px)}
+.quiz-options button.correct{background:rgba(0,255,65,.15);border-color:var(--dev-green)}
+.quiz-options button.wrong{background:rgba(198,40,40,.15);border-color:var(--df-red)}
+.quiz-result{margin-top:24px;font-size:1.1rem;min-height:2em}
+.quiz-next{display:none;margin:24px auto 0;background:none;border:1px solid rgba(255,255,255,.15);border-radius:10px;padding:10px 28px;color:var(--text);cursor:pointer;font-family:inherit;transition:all .3s}
+.quiz-next:hover{background:var(--surface2);border-color:rgba(255,255,255,.25)}
+.quiz-header{display:flex;align-items:center;gap:16px;max-width:640px;margin:0 auto 24px}
+.quiz-header .back{background:none;border:none;color:var(--text2);font-size:1.2rem;cursor:pointer;padding:8px;font-family:inherit}
+.quiz-header .back:hover{color:var(--text)}
+.quiz-header h1{font-size:1.2rem;flex:1}
+.quiz-header .score{font-family:monospace;font-size:.85rem;color:var(--text2)}
+.action-row{display:flex;gap:12px;max-width:1080px;margin:24px auto 0;flex-wrap:wrap}
+.action-row button{background:var(--surface);border:1px solid rgba(255,255,255,.08);border-radius:10px;padding:10px 20px;color:var(--text);cursor:pointer;font-family:inherit;font-size:.85rem;transition:all .3s}
+.action-row button:hover{background:var(--surface2);border-color:rgba(255,255,255,.2)}
+.action-row .quiz-btn{background:rgba(123,45,142,.2);border-color:var(--mys-purple)}
+.action-row .quiz-btn:hover{background:rgba(123,45,142,.35);box-shadow:0 0 20px rgba(123,45,142,.2)}
+.action-row .reset-btn{background:rgba(198,40,40,.1);border-color:#3a1515}
+.action-row .reset-btn:hover{background:rgba(198,40,40,.2)}
+.action-row .shuffle-btn{background:rgba(0,255,65,.08);border-color:#1a3a1a}
+.action-row .shuffle-btn:hover{background:rgba(0,255,65,.15)}
+.progress-bar{height:3px;background:var(--surface2);border-radius:2px;overflow:hidden;max-width:1080px;margin:12px auto 0}
+.progress-bar .fill{height:100%;border-radius:2px;transition:width .5s cubic-bezier(.22,1,.36,1);width:0%}
+.df-progress .fill{background:var(--df-red)}
+.fgo-progress .fill{background:var(--fgo-gold)}
+.dev-progress .fill{background:var(--dev-green)}
+.mys-progress .fill{background:var(--mys-accent)}.gl-progress .fill{background:var(--gl-pink)}.bio-progress .fill{background:var(--bio-green)}
+.toast{position:fixed;bottom:32px;left:50%;transform:translateX(-50%);background:var(--surface2);border:1px solid rgba(255,255,255,.1);border-radius:12px;padding:12px 24px;font-size:.85rem;z-index:100;opacity:0;transition:opacity .3s;pointer-events:none}
+.toast.show{opacity:1}
+@media(max-width:600px){
+  .deck-grid{grid-template-columns:1fr 1fr;gap:12px}
+  .deck-card{min-height:160px;padding:20px 16px}
+  .card-grid{grid-template-columns:repeat(auto-fill,minmax(140px,1fr))}
+  .quiz-options{grid-template-columns:1fr}
+  .quiz-box{padding:32px 20px;margin:40px auto}
+}
+
+@media(max-width:600px){.cg{grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:14px}.dc{padding:28px 22px;min-height:130px}.dc .ic{font-size:2rem}.dc h2{font-size:1rem}.hd{padding:12px 8px}.hd h1{font-size:.95rem}.fb .t{padding:7px 15px;font-size:.68rem;border-radius:18px}.ac button{padding:8px 16px;font-size:.65rem;border-radius:10px}.ft .wd{font-size:.9rem}.ba .df{font-size:.72rem}.ba .ex{font-size:.58rem}.ba .mb{padding:4px 12px;font-size:.55rem}}
+</style>
+</head>
+<body>
+
+<div id="load"><div class="load-ring"></div><div style="font-size:.8rem;color:var(--text2);letter-spacing:2px;">加载四级冲刺词库词库中...</div></div>
+
+<section id="landing">
+  <div class="title">🗂️ 地月专属 · 四级冲刺词库词库 <span>四级词汇嵌入你的世界 · <span class="em">word</span> 即记忆</span></div>
+  <div class="deck-grid" id="deckGrid">
+    
+      <h2>生物实验 · 医学</h2>
+      <p>显微镜、解剖针、培养皿——实验台上的真相</p>
+    </div></div>
+</section>
+
+<section id="game">
+  <div class="game-header">
+    <button class="back" onclick="backToLanding()">←</button><span id="headerArt" style="font-size:1.5rem;opacity:.5"></span>
+    <h1 id="gameTitle">四级冲刺词库名 <small id="gameSubtitle">已掌握 0/0</small></h1><button onclick="AudioSys.toggle()" id="musicBtn" style="background:none;border:1px solid rgba(255,255,255,.08);border-radius:10px;padding:8px 14px;color:var(--text2);cursor:pointer;font-size:.8rem;font-family:inherit;transition:all .3s" title="背景音乐">🔇 音乐</button>
+    <div class="game-stats"><span id="seenCount">👁️ 0</span><span id="masteredCount">⭐ 0</span></div>
+  </div>
+  <div class="filter-bar" id="filterBar">
+    <span class="tag active" data-filter="all" onclick="setFilter(this,'all')">全部</span>
+    <span class="tag" data-filter="new" onclick="setFilter(this,'new')">📖 未翻</span>
+    <span class="tag" data-filter="seen" onclick="setFilter(this,'seen')">👁️ 已阅</span>
+    <span class="tag" data-filter="mastered" onclick="setFilter(this,'mastered')">⭐ 掌握</span>
+  </div>
+  <div class="progress-bar" id="progressBar"><div class="fill" id="progressFill"></div></div>
+  <div class="card-grid" id="cardGrid"></div>
+  <div class="action-row">
+    <button onclick="startQuiz()" class="quiz-btn">🎯 测试模式</button>
+    <button onclick="flipAll()">🔄 全部翻面</button>
+    <button onclick="shuffleCards()" class="shuffle-btn">🔀 洗牌</button>
+    <button onclick="resetDeck()" class="reset-btn">🔄 重置进度</button>
+  </div>
+</section>
+
+<section id="quiz">
+  <div class="quiz-header">
+    <button class="back" onclick="exitQuiz()">←</button>
+    <h1>🎯 语境选义</h1>
+    <span class="score" id="quizScore">0/0</span>
+  </div>
+  <div class="quiz-box" id="quizBox">
+    <div class="q-word" id="qWord">word</div>
+    <div class="q-pos" id="qPos">n.</div>
+    <div class="quiz-options" id="quizOptions"></div>
+    <div class="quiz-result" id="quizResult"></div>
+    <button class="quiz-next" id="quizNext" onclick="nextQuiz()">下一题 →</button>
+  </div>
+</section>
+
+<div class="toast" id="toast"></div>
+
+<script>
+// 🎵 Audio system v2 — 6 domains, multiple melodies, chords, bass
+(function(){
+  var AS = {
+    ctx: null, bgGain: null, sfxGain: null,
+    playing: false, _timer: null, _bassTimer: null, _initd: false,
+    _melIdx: 0, _theme: null,
+    
+    init: function(){
+      if(this._initd) return;
+      try {
+        this.ctx = new (window.AudioContext || window.webkitAudioContext)();
+        var mg = this.ctx.createGain();
+        mg.gain.value = 0.2;
+        mg.connect(this.ctx.destination);
+        this.bgGain = this.ctx.createGain();
+        this.bgGain.gain.value = 0.25;
+        this.bgGain.connect(mg);
+        this.sfxGain = this.ctx.createGain();
+        this.sfxGain.gain.value = 0.4;
+        this.sfxGain.connect(mg);
+        this._initd = true;
+      } catch(e){}
+    },
+    
+    // Play a single note
+    note: function(freq, dur, type, delay, vol, dest){
+      if(!this.ctx || freq <= 0) return;
+      var t = this.ctx.currentTime + (delay||0);
+      var o = this.ctx.createOscillator();
+      var g = this.ctx.createGain();
+      o.type = type||'sine';
+      o.frequency.value = freq;
+      var v = vol||0.3;
+      g.gain.setValueAtTime(0.001, t);
+      g.gain.exponentialRampToValueAtTime(v, t+0.02);
+      g.gain.exponentialRampToValueAtTime(v*0.7, t+dur*0.5);
+      g.gain.exponentialRampToValueAtTime(0.001, t+dur);
+      var d = dest||this.sfxGain;
+      o.connect(g); g.connect(d);
+      o.start(t); o.stop(t+dur);
+    },
+    
+    // Play a chord (multiple notes at once)
+    chord: function(notes, dur, type, delay, vol){
+      for(var i=0;i<notes.length;i++){
+        this.note(notes[i], dur, type, delay, vol, this.bgGain);
+      }
+    },
+    
+    sfx: function(type){
+      switch(type){
+        case 'flip':
+          this.note(880,0.05,'sine',0,0.2);
+          this.note(1100,0.04,'sine',0.025,0.15);
+          break;
+        case 'correct':
+          this.note(523,0.1,'sine',0,0.2);
+          this.note(659,0.1,'sine',0.08,0.2);
+          this.note(784,0.15,'sine',0.16,0.25);
+          break;
+        case 'wrong':
+          this.note(300,0.12,'sawtooth',0,0.15);
+          this.note(250,0.18,'sawtooth',0.1,0.15);
+          break;
+        case 'master':
+          this.note(587,0.08,'sine',0,0.2);
+          this.note(740,0.08,'sine',0.06,0.2);
+          this.note(880,0.08,'sine',0.12,0.2);
+          this.note(1047,0.25,'sine',0.18,0.25);
+          break;
+        case 'enter':
+          this.note(440,0.06,'triangle',0,0.15);
+          this.note(660,0.08,'triangle',0.05,0.15);
+          break;
+        case 'exit':
+          this.note(660,0.06,'triangle',0,0.12);
+          this.note(440,0.08,'triangle',0.05,0.12);
+          break;
+      }
+    },
+    
+    // 🌟 6 domains × multiple melodies
+    melodies: {
+      // Horn-like, dark, ominous
+      df1: {n:[110,110,146,110,110,110,110,146,110,110,110],d:[0.4,0.15,0.4,0.15,0.15,0.15,0.3,0.4,0.15,0.4,0.8],t:'sawtooth'},
+      df2: {n:[98,110,130,146,130,110,98,110,130,146,165,146],d:[0.3,0.2,0.2,0.3,0.2,0.2,0.3,0.2,0.2,0.3,0.3,0.6],t:'sawtooth'},
+      df3: {n:[55,55,65,73,82,73,65,55],d:[0.6,0.3,0.3,0.5,0.5,0.3,0.3,1.0],t:'square'},
+      // Epic, rising fanfare
+      fgo1: {n:[392,440,523,659,784,659,523,440],d:[0.3,0.3,0.3,0.3,0.4,0.2,0.2,0.6],t:'sine'},
+      fgo2: {n:[523,587,659,784,880,1047,880,784],d:[0.25,0.2,0.25,0.3,0.3,0.45,0.2,0.6],t:'sine'},
+      fgo3: {n:[349,392,523,587,659,523,587,659,784,659],d:[0.2,0.2,0.3,0.2,0.3,0.2,0.2,0.2,0.35,0.65],t:'triangle'},
+      // Techy, glitchy
+      dev1: {n:[220,0,220,0,261,0,220,0,293,0,261,0],d:[0.15,0.08,0.15,0.08,0.15,0.08,0.15,0.08,0.15,0.08,0.15,0.3],t:'square'},
+      dev2: {n:[330,0,293,0,261,0,293,0,330,0,349,0],d:[0.12,0.06,0.12,0.06,0.12,0.06,0.12,0.06,0.12,0.06,0.2,0.25],t:'square'},
+      dev3: {n:[131,165,196,220,261,220,196,165],d:[0.2,0.15,0.15,0.2,0.3,0.15,0.15,0.5],t:'sawtooth'},
+      // Mystical, dreamy
+      mys1: {n:[196,261,330,392,330,261,196,330],d:[0.5,0.3,0.3,0.5,0.3,0.3,0.5,0.8],t:'triangle'},
+      mys2: {n:[220,261,330,392,440,523,440,392],d:[0.4,0.3,0.3,0.4,0.3,0.5,0.3,0.7],t:'sine'},
+      mys3: {n:[147,165,196,220,261,330,392,330,261,220],d:[0.3,0.2,0.25,0.2,0.3,0.25,0.4,0.2,0.25,0.6],t:'triangle'},
+      // Sweet, anime
+      gl1: {n:[523,659,784,659,784,880,784,659,523],d:[0.3,0.2,0.3,0.2,0.3,0.4,0.2,0.2,0.6],t:'sine'},
+      gl2: {n:[1047,784,1047,880,784,659,784,523],d:[0.25,0.15,0.3,0.2,0.2,0.2,0.25,0.55],t:'sine'},
+      gl3: {n:[659,784,880,784,659,523,659,784,880,1047],d:[0.2,0.2,0.3,0.15,0.15,0.2,0.2,0.2,0.3,0.5],t:'triangle'},
+      // Academic, calm
+      bio1: {n:[262,294,330,349,392,349,330,294],d:[0.4,0.3,0.3,0.3,0.5,0.3,0.3,0.6],t:'triangle'},
+      bio2: {n:[349,392,440,523,440,392,349,330],d:[0.35,0.25,0.3,0.4,0.3,0.25,0.3,0.55],t:'sine'},
+      bio3: {n:[262,330,392,523,392,330,262,294],d:[0.3,0.2,0.25,0.35,0.25,0.2,0.3,0.5],t:'triangle'}
+    },
+    
+    // Bass lines for each theme (low notes, slower)
+    bassLines: {
+      df: {n:[55,0,55,0,49,0,55,0],d:[0.5,0.3,0.3,0.2,0.4,0.3,0.4,0.6],t:'sawtooth'},
+      fgo: {n:[65,73,82,98,82,73,65,55],d:[0.5,0.3,0.3,0.5,0.3,0.3,0.5,0.8],t:'triangle'},
+      dev: {n:[55,0,65,0,73,0,65,0],d:[0.3,0.15,0.3,0.15,0.3,0.15,0.3,0.5],t:'square'},
+      mys: {n:[49,55,65,73,65,55,49,55],d:[0.6,0.3,0.35,0.5,0.3,0.35,0.6,0.8],t:'triangle'},
+      gl: {n:[65,73,82,98,82,73,65,55],d:[0.4,0.25,0.3,0.4,0.25,0.25,0.4,0.6],t:'sine'},
+      bio: {n:[65,0,73,0,82,73,0,65],d:[0.4,0.2,0.3,0.2,0.4,0.3,0.2,0.6],t:'triangle'}
+    },
+    
+    // Theme chord progression (plays as sustained harmony)
+    chordProg: {
+      df: [[55,65,73],[55,65,73],[49,61,73],[55,65,73]],
+      fgo: [[65,82,98],[73,98,110],[82,98,110],[65,82,98]],
+      dev: [[55,73,82],[55,73,82],[49,65,73],[55,73,82]],
+      mys: [[49,61,73],[55,65,82],[49,61,73],[55,65,82]],
+      gl: [[65,82,98],[73,98,110],[82,98,110],[73,98,110]],
+      bio: [[55,65,82],[49,61,73],[55,65,82],[49,61,73]]
+    },
+    
+    _melList: null,
+    _chordIdx: 0,
+    
+    playBg: function(theme){
+      this.stopBg();
+      if(!this.ctx || !this.playing) return;
+      this._theme = theme;
+      
+      // Get melodies for this theme (pick a random variant each loop)
+      var melKeys = [];
+      for(var k in this.melodies){
+        if(k.indexOf(theme) === 0) melKeys.push(k);
+      }
+      
+      var self = this;
+      var chordDur = 3.2; // chord changes every ~3.2s
+      var chordIdx = 0;
+      var cp = this.chordProg[theme] || this.chordProg.bio;
+      var bl = this.bassLines[theme] || this.bassLines.bio;
+      var bIdx = 0;
+      
+      // Bass loop
+      var playBass = function(){
+        if(!self.playing || !self.ctx) return;
+        var n = bl.n[bIdx];
+        var d = bl.d[bIdx];
+        if(n > 0){
+          self.note(n, d, bl.t, 0, 0.12, self.bgGain);
+        }
+        bIdx = (bIdx + 1) % bl.n.length;
+        self._bassTimer = setTimeout(playBass, (bl.d[bIdx]||0.3)*1000*1.05);
+      };
+      
+      // Chord loop (sustained harmony)
+      var playChords = function(){
+        if(!self.playing || !self.ctx) return;
+        var ch = cp[chordIdx % cp.length];
+        self.chord(ch, chordDur*0.9, 'sine', 0, 0.04);
+        chordIdx++;
+        self._chordTimer = setTimeout(playChords, chordDur*1000);
+      };
+      
+      // Main melody loop
+      var melIdx = 0;
+      var pickMel = function() {
+        // Pick a random melody from the theme
+        return melKeys[Math.floor(Math.random() * melKeys.length)];
+      };
+      var currentMelKey = pickMel();
+      
+      var playMel = function(){
+        if(!self.playing || !self.ctx) {
+          self.stopBg();
+          return;
+        }
+        
+        // Pick new melody occasionally (every 2-3 loops)
+        if(Math.random() < 0.15) currentMelKey = pickMel();
+        
+        var mel = self.melodies[currentMelKey];
+        if(!mel) return;
+        
+        var freq = mel.n[melIdx];
+        var dur = mel.d[melIdx];
+        
+        if(freq > 0){
+          // Lead note
+          self.note(freq, dur, mel.t, 0, 0.13, self.bgGain);
+          // Subtle harmony a 5th above
+          self.note(freq * 1.5, dur, 'sine', 0.01, 0.04, self.bgGain);
+        }
+        
+        melIdx = (melIdx + 1) % mel.n.length;
+        var wait = (mel.d[melIdx-1]||0.3) * 1000 * 1.08;
+        self._timer = setTimeout(playMel, wait);
+      };
+      
+      playBass();
+      playChords();
+      playMel();
+    },
+    
+    stopBg: function(){
+      if(this._timer) { clearTimeout(this._timer); this._timer = null; }
+      if(this._bassTimer) { clearTimeout(this._bassTimer); this._bassTimer = null; }
+      if(this._chordTimer) { clearTimeout(this._chordTimer); this._chordTimer = null; }
+    },
+    
+    toggle: function(){
+      this.init();
+      this.playing = !this.playing;
+      var btn = document.getElementById('musicBtn');
+      if(typeof currentDeck !== 'undefined' && currentDeck && this.playing) {
+        btn.innerHTML = '\uD83C\uDFB5 音乐';
+        btn.style.color = 'var(--text)';
+        this.playBg(window.VOCAB_DATA[currentDeck].theme);
+      } else if(this.playing) {
+        btn.innerHTML = '\uD83C\uDFB5 音乐';
+        btn.style.color = 'var(--text)';
+      } else {
+        btn.innerHTML = '\uD83D\uDD07 音乐';
+        btn.style.color = 'var(--text2)';
+        this.stopBg();
+      }
+    }
+  };
+  window.AudioSys = AS;
+})();
+
+window.VOCAB_DATA = {
+ "darkfantasy": {
+  "name": "黑暗幻想",
+  "icon": "🗡️",
+  "theme": "df",
+  "progressClass": "df-progress",
+  "desc": "暗影、鲜血与诅咒——黑暗世界的语言",
+  "words": [
+   {
+    "w": "torture",
+    "p": "n.",
+    "d": "拷问",
+    "e": "The torture echoed through the dark chamber, sending chills down their spines."
+   },
+   {
+    "w": "devil",
+    "p": "n.",
+    "d": " 魔鬼， 恶魔",
+    "e": "The ancient curse brought nothing but devil to those who entered the tomb."
+   },
+   {
+    "w": "bury",
+    "p": "v.",
+    "d": "埋葬，葬",
+    "e": "The warrior's bury was tested beyond the limits of human endurance."
+   },
+   {
+    "w": "evil",
+    "p": "adj.",
+    "d": " 坏的",
+    "e": "Dark evil flowed from the wound like a river of shadow."
+   },
+   {
+    "w": "chaos",
+    "p": "n.",
+    "d": " 混乱， 紊乱",
+    "e": "No chaos could save them from the fate that awaited below."
+   },
+   {
+    "w": "die",
+    "p": "v.",
+    "d": "死，死亡",
+    "e": "The cult performed a die that had been forbidden for centuries."
+   },
+   {
+    "w": "flame",
+    "p": "n.",
+    "d": " 火焰， 光辉",
+    "e": "Her eyes held a flame that spoke of unspeakable horrors witnessed."
+   },
+   {
+    "w": "decay",
+    "p": "v.",
+    "d": "腐烂",
+    "e": "The decay of battle rang across the desolate plain."
+   },
+   {
+    "w": "wound",
+    "p": "n.",
+    "d": "创伤，伤",
+    "e": "An ancient wound awakened in the depths of the forgotten temple."
+   },
+   {
+    "w": "grief",
+    "p": "n.",
+    "d": "悲伤",
+    "e": "The grief of his sacrifice would echo through eternity."
+   },
+   {
+    "w": "bone",
+    "p": "n.",
+    "d": "骨，骨骼",
+    "e": "A single bone changed the course of the dark prophecy."
+   },
+   {
+    "w": "dread",
+    "p": "n.",
+    "d": "畏惧",
+    "e": "Their dread against the darkness was their only hope of survival."
+   },
+   {
+    "w": "army",
+    "p": "n.",
+    "d": "军队",
+    "e": "The army echoed through the dark chamber, sending chills down their spines."
+   },
+   {
+    "w": "ash",
+    "p": "n.",
+    "d": "灰，灰末",
+    "e": "A cold ash settled in his chest as the creature emerged from the shadows."
+   },
+   {
+    "w": "hell",
+    "p": "n.",
+    "d": "地狱",
+    "e": "The ancient curse brought nothing but hell to those who entered the tomb."
+   },
+   {
+    "w": "dragon",
+    "p": "n.",
+    "d": "龙",
+    "e": "In the darkness, only the dragon of steel against stone could be heard."
+   },
+   {
+    "w": "grave",
+    "p": "n.",
+    "d": "坟墓",
+    "e": "The warrior's grave was tested beyond the limits of human endurance."
+   },
+   {
+    "w": "trap",
+    "p": "n.",
+    "d": "陷阱，捕捉器",
+    "e": "Dark trap flowed from the wound like a river of shadow."
+   },
+   {
+    "w": "kill",
+    "p": "v.",
+    "d": "杀死",
+    "e": "The kill of the fallen kingdom still haunted the ruins."
+   },
+   {
+    "w": "fierce",
+    "p": "adj.",
+    "d": " 凶猛的",
+    "e": "No fierce could save them from the fate that awaited below."
+   },
+   {
+    "w": "dark",
+    "p": "adj.",
+    "d": "暗的",
+    "e": "Her eyes held a dark that spoke of unspeakable horrors witnessed."
+   },
+   {
+    "w": "attack",
+    "p": "n.",
+    "d": "攻击，打击",
+    "e": "The attack of battle rang across the desolate plain."
+   },
+   {
+    "w": "prison",
+    "p": "n.",
+    "d": "监狱，监禁",
+    "e": "An ancient prison awakened in the depths of the forgotten temple."
+   },
+   {
+    "w": "fear",
+    "p": "n.",
+    "d": "害怕",
+    "e": "A single fear changed the course of the dark prophecy."
+   },
+   {
+    "w": "whip",
+    "p": "v.",
+    "d": "鞭笞",
+    "e": "Their whip against the darkness was their only hope of survival."
+   },
+   {
+    "w": "poison",
+    "p": "n.",
+    "d": "毒，毒药",
+    "e": "A cold poison settled in his chest as the creature emerged from the shadows."
+   },
+   {
+    "w": "sword",
+    "p": "n.",
+    "d": " 剑， 刀",
+    "e": "In the darkness, only the sword of steel against stone could be heard."
+   },
+   {
+    "w": "dead",
+    "p": "adj.",
+    "d": "死的，无生命的",
+    "e": "The warrior's dead was tested beyond the limits of human endurance."
+   },
+   {
+    "w": "terror",
+    "p": "n.",
+    "d": "恐怖，惊骇",
+    "e": "The terror of the fallen kingdom still haunted the ruins."
+   },
+   {
+    "w": "ancient",
+    "p": "adj.",
+    "d": "古代的，古老的",
+    "e": "No ancient could save them from the fate that awaited below."
+   },
+   {
+    "w": "ache",
+    "p": "v.",
+    "d": "痛",
+    "e": "The cult performed a ache that had been forbidden for centuries."
+   },
+   {
+    "w": "hunt",
+    "p": "n.",
+    "d": "打猎",
+    "e": "Her eyes held a hunt that spoke of unspeakable horrors witnessed."
+   },
+   {
+    "w": "rage",
+    "p": "vi.",
+    "d": " 狂吹",
+    "e": "An ancient rage awakened in the depths of the forgotten temple."
+   },
+   {
+    "w": "giant",
+    "p": "n.",
+    "d": "巨人",
+    "e": "The giant of his sacrifice would echo through eternity."
+   },
+   {
+    "w": "death",
+    "p": "n.",
+    "d": "死，死亡",
+    "e": "The death echoed through the dark chamber, sending chills down their spines."
+   },
+   {
+    "w": "survive",
+    "p": "vi.",
+    "d": " 活下来， 幸存",
+    "e": "A cold survive settled in his chest as the creature emerged from the shadows."
+   },
+   {
+    "w": "survival",
+    "p": "n.",
+    "d": "幸存",
+    "e": "The ancient curse brought nothing but survival to those who entered the tomb."
+   },
+   {
+    "w": "horror",
+    "p": "n.",
+    "d": " 恐怖",
+    "e": "In the darkness, only the horror of steel against stone could be heard."
+   },
+   {
+    "w": "knife",
+    "p": "n.",
+    "d": "小刀，刀，餐刀",
+    "e": "The warrior's knife was tested beyond the limits of human endurance."
+   },
+   {
+    "w": "ruin",
+    "p": "v.",
+    "d": " 毁坏",
+    "e": "Dark ruin flowed from the wound like a river of shadow."
+   },
+   {
+    "w": "collapse",
+    "p": "v.",
+    "d": "倒坍",
+    "e": "No collapse could save them from the fate that awaited below."
+   },
+   {
+    "w": "injury",
+    "p": "n.",
+    "d": "损害，伤害",
+    "e": "The cult performed a injury that had been forbidden for centuries."
+   },
+   {
+    "w": "destroy",
+    "p": "v.",
+    "d": "破坏",
+    "e": "Her eyes held a destroy that spoke of unspeakable horrors witnessed."
+   },
+   {
+    "w": "curse",
+    "p": "n.",
+    "d": "诅咒，咒骂",
+    "e": "An ancient curse awakened in the depths of the forgotten temple."
+   },
+   {
+    "w": "blade",
+    "p": "n.",
+    "d": "刀刃，刀片",
+    "e": "The blade of his sacrifice would echo through eternity."
+   },
+   {
+    "w": "burn",
+    "p": "v.",
+    "d": "烧，燃烧",
+    "e": "Their burn against the darkness was their only hope of survival."
+   },
+   {
+    "w": "ceremony",
+    "p": "n.",
+    "d": "典礼，仪式",
+    "e": "The ceremony echoed through the dark chamber, sending chills down their spines."
+   },
+   {
+    "w": "hopeless",
+    "p": "adj.",
+    "d": " 没有希望的， 绝望的",
+    "e": "A cold hopeless settled in his chest as the creature emerged from the shadows."
+   },
+   {
+    "w": "wicked",
+    "p": "adj.",
+    "d": "坏的",
+    "e": "In the darkness, only the wicked of steel against stone could be heard."
+   },
+   {
+    "w": "magic",
+    "p": "n.",
+    "d": "魔法，巫术",
+    "e": "Dark magic flowed from the wound like a river of shadow."
+   },
+   {
+    "w": "agony",
+    "p": "n.",
+    "d": "极度痛苦",
+    "e": "No agony could save them from the fate that awaited below."
+   },
+   {
+    "w": "beast",
+    "p": "n.",
+    "d": " 兽， 野兽， 牲畜",
+    "e": "The cult performed a beast that had been forbidden for centuries."
+   },
+   {
+    "w": "nightmare",
+    "p": "n.",
+    "d": " 噩梦",
+    "e": "Her eyes held a nightmare that spoke of unspeakable horrors witnessed."
+   },
+   {
+    "w": "despair",
+    "p": "n.",
+    "d": "绝望",
+    "e": "The despair of battle rang across the desolate plain."
+   },
+   {
+    "w": "ghost",
+    "p": "n.",
+    "d": "鬼，灵魂",
+    "e": "An ancient ghost awakened in the depths of the forgotten temple."
+   },
+   {
+    "w": "steel",
+    "p": "n.",
+    "d": "钢，钢铁",
+    "e": "A single steel changed the course of the dark prophecy."
+   },
+   {
+    "w": "suffer",
+    "p": "v.",
+    "d": "受痛苦",
+    "e": "Their suffer against the darkness was their only hope of survival."
+   },
+   {
+    "w": "pain",
+    "p": "n.",
+    "d": "痛，疼痛",
+    "e": "The pain echoed through the dark chamber, sending chills down their spines."
+   },
+   {
+    "w": "iron",
+    "p": "n.",
+    "d": "铁",
+    "e": "The ancient curse brought nothing but iron to those who entered the tomb."
+   },
+   {
+    "w": "cruel",
+    "p": "adj.",
+    "d": "残忍的，残酷的",
+    "e": "In the darkness, only the cruel of steel against stone could be heard."
+   },
+   {
+    "w": "chain",
+    "p": "n.",
+    "d": "链，链条，项圈",
+    "e": "Dark chain flowed from the wound like a river of shadow."
+   },
+   {
+    "w": "sacrifice",
+    "p": "n&vt.",
+    "d": "牺牲",
+    "e": "An ancient sacrifice awakened in the depths of the forgotten temple."
+   },
+   {
+    "w": "shield",
+    "p": "n.",
+    "d": "盾",
+    "e": "The shield of his sacrifice would echo through eternity."
+   },
+   {
+    "w": "funeral",
+    "p": "n.",
+    "d": " 葬礼， 丧礼， 丧葬",
+    "e": "A single funeral changed the course of the dark prophecy."
+   },
+   {
+    "w": "weapon",
+    "p": "n.",
+    "d": " 武器， 兵器",
+    "e": "The weapon of the fallen kingdom still haunted the ruins."
+   },
+   {
+    "w": "captive",
+    "p": "n.",
+    "d": "俘虏，被监禁的人",
+    "e": "An ancient captive awakened in the depths of the forgotten temple."
+   },
+   {
+    "w": "spiritual",
+    "p": "adj.",
+    "d": " 精神的， 心灵的",
+    "e": "A single spiritual changed the course of the dark prophecy."
+   },
+   {
+    "w": "cash",
+    "p": "n.",
+    "d": "现金，现款",
+    "e": "Their cash against the darkness was their only hope of survival."
+   },
+   {
+    "w": "protect",
+    "p": "v.",
+    "d": "保护，保卫，警戒",
+    "e": "The protect echoed through the dark chamber, sending chills down their spines."
+   },
+   {
+    "w": "painter",
+    "p": "n.",
+    "d": "漆工，画家，绘画者",
+    "e": "A cold painter settled in his chest as the creature emerged from the shadows."
+   },
+   {
+    "w": "rotation",
+    "p": "n.",
+    "d": "旋转，转动",
+    "e": "The ancient curse brought nothing but rotation to those who entered the tomb."
+   },
+   {
+    "w": "cashier",
+    "p": "n.",
+    "d": " 出纳",
+    "e": "In the darkness, only the cashier of steel against stone could be heard."
+   },
+   {
+    "w": "protective",
+    "p": "adj.",
+    "d": " 保护的， 防护的",
+    "e": "The warrior's protective was tested beyond the limits of human endurance."
+   },
+   {
+    "w": "tragedy",
+    "p": "n.",
+    "d": " 悲剧， 惨事， 惨案",
+    "e": "Dark tragedy flowed from the wound like a river of shadow."
+   },
+   {
+    "w": "encourage",
+    "p": "v.",
+    "d": "鼓励，支持，助长",
+    "e": "The encourage of the fallen kingdom still haunted the ruins."
+   },
+   {
+    "w": "environment",
+    "p": "n.",
+    "d": " 环境， 外界",
+    "e": "No environment could save them from the fate that awaited below."
+   },
+   {
+    "w": "fashionable",
+    "p": "adj.",
+    "d": " 流行的， 时髦的",
+    "e": "The cult performed a fashionable that had been forbidden for centuries."
+   },
+   {
+    "w": "discourage",
+    "p": "v.",
+    "d": "使泄气，使灰心",
+    "e": "Her eyes held a discourage that spoke of unspeakable horrors witnessed."
+   },
+   {
+    "w": "ashamed",
+    "p": "adj.",
+    "d": " 惭愧的， 羞耻的， 害臊的",
+    "e": "The ashamed of battle rang across the desolate plain."
+   },
+   {
+    "w": "carrot",
+    "p": "n.",
+    "d": " 胡萝卜",
+    "e": "An ancient carrot awakened in the depths of the forgotten temple."
+   },
+   {
+    "w": "switch",
+    "p": "v.",
+    "d": "转变，改变",
+    "e": "The switch of his sacrifice would echo through eternity."
+   },
+   {
+    "w": "courageous",
+    "p": "adj.",
+    "d": "有勇气的",
+    "e": "A single courageous changed the course of the dark prophecy."
+   },
+   {
+    "w": "brother",
+    "p": "n.",
+    "d": "兄弟",
+    "e": "Their brother against the darkness was their only hope of survival."
+   }
+  ]
+ },
+ "fgo": {
+  "name": "Fate/Grand Order",
+  "icon": "⚔️",
+  "theme": "fgo",
+  "progressClass": "fgo-progress",
+  "desc": "从者、宝具与圣杯——迦勒底的世界",
+  "words": [
+   {
+    "w": "brave",
+    "p": "adj.",
+    "d": "勇敢的，华丽的",
+    "e": "The master's brave summoned a legendary hero from the throne of heroes."
+   },
+   {
+    "w": "arrow",
+    "p": "n.",
+    "d": " 箭， 箭状物",
+    "e": "With a arrow of command, the servant unleashed their noble phantasm."
+   },
+   {
+    "w": "queen",
+    "p": "n.",
+    "d": "王后",
+    "e": "The holy grail war demanded both queen and sacrifice from every master."
+   },
+   {
+    "w": "honor",
+    "p": "v.",
+    "d": "纪念",
+    "e": "Her honor as a saber-class servant was unmatched in close combat."
+   },
+   {
+    "w": "bond",
+    "p": "n.",
+    "d": "联结，联系",
+    "e": "The bond of their bond grew stronger with every battle."
+   },
+   {
+    "w": "pray",
+    "p": "v.",
+    "d": " 祈祷， 祈求",
+    "e": "The servant's pray was the crystallized legend of a heroic spirit."
+   },
+   {
+    "w": "fight",
+    "p": "v.",
+    "d": "打(仗)",
+    "e": "Chaldea's fight against the incineration of humanity was unwavering."
+   },
+   {
+    "w": "jewel",
+    "p": "n.",
+    "d": " 宝石",
+    "e": "Each jewel in the grail war carried the weight of human history."
+   },
+   {
+    "w": "bless",
+    "p": "v.",
+    "d": "祝福",
+    "e": "The bless between master and servant transcended time and space."
+   },
+   {
+    "w": "noble",
+    "p": "adj.",
+    "d": "贵族的",
+    "e": "A powerful noble was needed to maintain the servant's physical form."
+   },
+   {
+    "w": "bow",
+    "p": "v.",
+    "d": "鞠躬",
+    "e": "The bow of the holy grail could reshape reality itself."
+   },
+   {
+    "w": "crown",
+    "p": "n.",
+    "d": "王冠，冕",
+    "e": "Through crown and courage, they faced the beast of calamity."
+   },
+   {
+    "w": "hero",
+    "p": "n.",
+    "d": "男主角",
+    "e": "The legendary hero had been passed down through generations of heroes."
+   },
+   {
+    "w": "fate",
+    "p": "n.",
+    "d": "命运，天数",
+    "e": "The master's fate summoned a legendary hero from the throne of heroes."
+   },
+   {
+    "w": "myth",
+    "p": "n.",
+    "d": "神话",
+    "e": "With a myth of command, the servant unleashed their noble phantasm."
+   },
+   {
+    "w": "God",
+    "p": "n.",
+    "d": "神，神像",
+    "e": "The holy grail war demanded both God and sacrifice from every master."
+   },
+   {
+    "w": "defeat",
+    "p": "v.",
+    "d": "战胜，击败",
+    "e": "Her defeat as a saber-class servant was unmatched in close combat."
+   },
+   {
+    "w": "legend",
+    "p": "n.",
+    "d": "传奇",
+    "e": "The legend of their bond grew stronger with every battle."
+   },
+   {
+    "w": "ally",
+    "p": "v.",
+    "d": " 结盟， 联合",
+    "e": "A ally of ancient power glowed within the summoning circle."
+   },
+   {
+    "w": "miracle",
+    "p": "n.",
+    "d": " 奇迹， 令人惊奇的人",
+    "e": "The servant's miracle was the crystallized legend of a heroic spirit."
+   },
+   {
+    "w": "courage",
+    "p": "n.",
+    "d": "勇气，胆量，胆识",
+    "e": "Chaldea's courage against the incineration of humanity was unwavering."
+   },
+   {
+    "w": "royal",
+    "p": "adj.",
+    "d": " 王室的， 皇家的",
+    "e": "The royal between master and servant transcended time and space."
+   },
+   {
+    "w": "loyal",
+    "p": "adj.",
+    "d": " 忠诚的， 忠心的",
+    "e": "A powerful loyal was needed to maintain the servant's physical form."
+   },
+   {
+    "w": "vision",
+    "p": "n.",
+    "d": "视",
+    "e": "The vision of the holy grail could reshape reality itself."
+   },
+   {
+    "w": "battle",
+    "p": "n.",
+    "d": "战役",
+    "e": "Her battle as a ruler class servant brought order to the chaos."
+   },
+   {
+    "w": "trial",
+    "p": "n.",
+    "d": " 试， 试验",
+    "e": "The master's trial summoned a legendary hero from the throne of heroes."
+   },
+   {
+    "w": "castle",
+    "p": "n.",
+    "d": "城堡",
+    "e": "With a castle of command, the servant unleashed their noble phantasm."
+   },
+   {
+    "w": "master",
+    "p": "n.",
+    "d": "主人",
+    "e": "Her master as a saber-class servant was unmatched in close combat."
+   },
+   {
+    "w": "glory",
+    "p": "n.",
+    "d": " 光荣， 荣誉的事",
+    "e": "A glory of ancient power glowed within the summoning circle."
+   },
+   {
+    "w": "angel",
+    "p": "n.",
+    "d": "天使，神差，安琪儿",
+    "e": "Each angel in the grail war carried the weight of human history."
+   },
+   {
+    "w": "force",
+    "p": "v.",
+    "d": "强迫",
+    "e": "The force between master and servant transcended time and space."
+   },
+   {
+    "w": "king",
+    "p": "n.",
+    "d": "国王，君主",
+    "e": "The master's king summoned a legendary hero from the throne of heroes."
+   },
+   {
+    "w": "gate",
+    "p": "n.",
+    "d": "大门",
+    "e": "With a gate of command, the servant unleashed their noble phantasm."
+   },
+   {
+    "w": "combat",
+    "p": "n.",
+    "d": "战争，斗争，格斗",
+    "e": "The holy grail war demanded both combat and sacrifice from every master."
+   },
+   {
+    "w": "divine",
+    "p": "adj.",
+    "d": "神圣的",
+    "e": "The divine of their bond grew stronger with every battle."
+   },
+   {
+    "w": "power",
+    "p": "n.",
+    "d": "能力",
+    "e": "The servant's power was the crystallized legend of a heroic spirit."
+   },
+   {
+    "w": "companion",
+    "p": "n.",
+    "d": "同伴",
+    "e": "Chaldea's companion against the incineration of humanity was unwavering."
+   },
+   {
+    "w": "mission",
+    "p": "n.",
+    "d": "使命，任务",
+    "e": "A powerful mission was needed to maintain the servant's physical form."
+   },
+   {
+    "w": "energy",
+    "p": "n.",
+    "d": "活力",
+    "e": "The energy of the holy grail could reshape reality itself."
+   },
+   {
+    "w": "champion",
+    "p": "n.",
+    "d": "冠军，得胜者",
+    "e": "Through champion and courage, they faced the beast of calamity."
+   },
+   {
+    "w": "guard",
+    "p": "v.",
+    "d": "守卫",
+    "e": "The legendary guard had been passed down through generations of heroes."
+   },
+   {
+    "w": "faith",
+    "p": "n.",
+    "d": "信任",
+    "e": "The master's faith summoned a legendary hero from the throne of heroes."
+   },
+   {
+    "w": "tower",
+    "p": "n.",
+    "d": "塔",
+    "e": "With a tower of command, the servant unleashed their noble phantasm."
+   },
+   {
+    "w": "defend",
+    "p": "v.",
+    "d": "保卫，防守",
+    "e": "The holy grail war demanded both defend and sacrifice from every master."
+   },
+   {
+    "w": "treasure",
+    "p": "n.",
+    "d": "财富",
+    "e": "The servant's treasure was the crystallized legend of a heroic spirit."
+   },
+   {
+    "w": "upward",
+    "p": "adj.",
+    "d": "向上的，上升的",
+    "e": "The upward of the holy grail could reshape reality itself."
+   },
+   {
+    "w": "elbow",
+    "p": "n.",
+    "d": "肘，肘部",
+    "e": "Through elbow and courage, they faced the beast of calamity."
+   },
+   {
+    "w": "rainbow",
+    "p": "n.",
+    "d": "虹，彩虹",
+    "e": "The legendary rainbow had been passed down through generations of heroes."
+   },
+   {
+    "w": "awkward",
+    "p": "adj.",
+    "d": "笨拙的",
+    "e": "Her awkward as a ruler class servant brought order to the chaos."
+   },
+   {
+    "w": "backward",
+    "p": "adv.",
+    "d": " [-]倒",
+    "e": "The master's backward summoned a legendary hero from the throne of heroes."
+   },
+   {
+    "w": "reward",
+    "p": "n.",
+    "d": "报答",
+    "e": "With a reward of command, the servant unleashed their noble phantasm."
+   },
+   {
+    "w": "aware",
+    "p": "adj.",
+    "d": " 知道的， 意识到的",
+    "e": "The holy grail war demanded both aware and sacrifice from every master."
+   },
+   {
+    "w": "afterward",
+    "p": "adv.",
+    "d": "后来，以后",
+    "e": "Her afterward as a saber-class servant was unmatched in close combat."
+   },
+   {
+    "w": "awareness",
+    "p": "n.",
+    "d": "意识",
+    "e": "The awareness of their bond grew stronger with every battle."
+   },
+   {
+    "w": "spray",
+    "p": "v.",
+    "d": " 喷， 溅散",
+    "e": "A spray of ancient power glowed within the summoning circle."
+   },
+   {
+    "w": "essentially",
+    "p": "adv.",
+    "d": "本质上地",
+    "e": "The servant's essentially was the crystallized legend of a heroic spirit."
+   },
+   {
+    "w": "heroic",
+    "p": "adj.",
+    "d": "英雄的",
+    "e": "Chaldea's heroic against the incineration of humanity was unwavering."
+   },
+   {
+    "w": "investigate",
+    "p": "v.",
+    "d": "调查",
+    "e": "Each investigate in the grail war carried the weight of human history."
+   },
+   {
+    "w": "gradually",
+    "p": "adv.",
+    "d": "逐渐地，逐步地",
+    "e": "The gradually between master and servant transcended time and space."
+   },
+   {
+    "w": "really",
+    "p": "adv.",
+    "d": "真正地",
+    "e": "A powerful really was needed to maintain the servant's physical form."
+   },
+   {
+    "w": "occasionally",
+    "p": "adv.",
+    "d": "偶然",
+    "e": "The occasionally of the holy grail could reshape reality itself."
+   },
+   {
+    "w": "warmth",
+    "p": "n.",
+    "d": " 暖和， 温暖",
+    "e": "The legendary warmth had been passed down through generations of heroes."
+   },
+   {
+    "w": "dramatically",
+    "p": "adv.",
+    "d": "戏剧性地，引人注目地",
+    "e": "The master's dramatically summoned a legendary hero from the throne of heroes."
+   },
+   {
+    "w": "specifically",
+    "p": "adv.",
+    "d": " 特别地， 特定地",
+    "e": "With a specifically of command, the servant unleashed their noble phantasm."
+   },
+   {
+    "w": "award",
+    "p": "n.",
+    "d": "奖，奖品",
+    "e": "The holy grail war demanded both award and sacrifice from every master."
+   },
+   {
+    "w": "hardware",
+    "p": "n.",
+    "d": "五金器具",
+    "e": "Her hardware as a saber-class servant was unmatched in close combat."
+   },
+   {
+    "w": "reinforce",
+    "p": "v.",
+    "d": "加强，强化",
+    "e": "A reinforce of ancient power glowed within the summoning circle."
+   },
+   {
+    "w": "downward",
+    "p": "adj.",
+    "d": "向下的",
+    "e": "The servant's downward was the crystallized legend of a heroic spirit."
+   },
+   {
+    "w": "basically",
+    "p": "adv.",
+    "d": "基本上",
+    "e": "Chaldea's basically against the incineration of humanity was unwavering."
+   },
+   {
+    "w": "outward",
+    "p": "adj.",
+    "d": " 外面的",
+    "e": "Each outward in the grail war carried the weight of human history."
+   },
+   {
+    "w": "mutually",
+    "p": "adv.",
+    "d": "互相地",
+    "e": "Through mutually and courage, they faced the beast of calamity."
+   },
+   {
+    "w": "faithful",
+    "p": "adj.",
+    "d": " 忠诚的",
+    "e": "Her faithful as a ruler class servant brought order to the chaos."
+   },
+   {
+    "w": "naturally",
+    "p": "adv.",
+    "d": " 当然",
+    "e": "With a naturally of command, the servant unleashed their noble phantasm."
+   },
+   {
+    "w": "mechanically",
+    "p": "adv.",
+    "d": "机械地",
+    "e": "The holy grail war demanded both mechanically and sacrifice from every master."
+   },
+   {
+    "w": "finally",
+    "p": "adv.",
+    "d": "最后",
+    "e": "Her finally as a saber-class servant was unmatched in close combat."
+   },
+   {
+    "w": "industrialize",
+    "p": "v.",
+    "d": " 工业化",
+    "e": "The industrialize of their bond grew stronger with every battle."
+   },
+   {
+    "w": "subdivision",
+    "p": "n.",
+    "d": "分区",
+    "e": "A subdivision of ancient power glowed within the summoning circle."
+   },
+   {
+    "w": "preferentially",
+    "p": "adv.",
+    "d": "优先地",
+    "e": "The servant's preferentially was the crystallized legend of a heroic spirit."
+   },
+   {
+    "w": "kingdom",
+    "p": "n.",
+    "d": "王国",
+    "e": "Each kingdom in the grail war carried the weight of human history."
+   },
+   {
+    "w": "industrial",
+    "p": "adj.",
+    "d": "工业的",
+    "e": "A powerful industrial was needed to maintain the servant's physical form."
+   },
+   {
+    "w": "loyalty",
+    "p": "n.",
+    "d": " 忠诚， 忠心",
+    "e": "The loyalty of the holy grail could reshape reality itself."
+   },
+   {
+    "w": "software",
+    "p": "n.",
+    "d": " 软件",
+    "e": "Through software and courage, they faced the beast of calamity."
+   },
+   {
+    "w": "empower",
+    "p": "vt.",
+    "d": " 授权于",
+    "e": "The legendary empower had been passed down through generations of heroes."
+   }
+  ]
+ },
+ "devops": {
+  "name": "运维·开发",
+  "icon": "🖥️",
+  "theme": "dev",
+  "progressClass": "dev-progress",
+  "desc": "服务器、脚本与部署——代码世界的工具箱",
+  "words": [
+   {
+    "w": "lock",
+    "p": "n.",
+    "d": "锁",
+    "e": "The lock crashed during the peak traffic hour, causing a system outage."
+   },
+   {
+    "w": "tag",
+    "p": "vi.",
+    "d": " 尾随",
+    "e": "A simple tag in the configuration file brought down the entire cluster."
+   },
+   {
+    "w": "log",
+    "p": "n.",
+    "d": "原木，木料",
+    "e": "The log of the deployment process was monitored by the CI pipeline."
+   },
+   {
+    "w": "error",
+    "p": "n.",
+    "d": "错误，谬误",
+    "e": "After the error, the logs showed a critical error in the database layer."
+   },
+   {
+    "w": "index",
+    "p": "n.",
+    "d": "索引",
+    "e": "The index between the microservices failed under high load conditions."
+   },
+   {
+    "w": "scale",
+    "p": "n.",
+    "d": "大小，规模",
+    "e": "A scheduled scale was required to patch the security vulnerability."
+   },
+   {
+    "w": "fault",
+    "p": "n.",
+    "d": "缺点",
+    "e": "The fault of the API endpoint returned a 500 internal server error."
+   },
+   {
+    "w": "route",
+    "p": "n.",
+    "d": " 路线， 路程",
+    "e": "The route was set to retry three times before giving up completely."
+   },
+   {
+    "w": "queue",
+    "p": "n.",
+    "d": "行列",
+    "e": "Container queue allowed the application to scale horizontally."
+   },
+   {
+    "w": "load",
+    "p": "v.",
+    "d": "装",
+    "e": "The load of the deployment was verified through automated testing."
+   },
+   {
+    "w": "branch",
+    "p": "n.",
+    "d": "树枝",
+    "e": "A branch in the firewall rules blocked all incoming connections."
+   },
+   {
+    "w": "crash",
+    "p": "n & v.",
+    "d": "坠落",
+    "e": "The crash of the new version was rolled back after the incident."
+   },
+   {
+    "w": "port",
+    "p": "n.",
+    "d": "港，港口",
+    "e": "Memory port caused the process to consume all available resources."
+   },
+   {
+    "w": "commit",
+    "p": "v.",
+    "d": "犯罪，承担义务",
+    "e": "The commit required root access to execute the system commands."
+   },
+   {
+    "w": "input",
+    "p": "n.",
+    "d": "输入",
+    "e": "The input crashed during the peak traffic hour, causing a system outage."
+   },
+   {
+    "w": "network",
+    "p": "n.",
+    "d": " 网状物",
+    "e": "The network of the deployment process was monitored by the CI pipeline."
+   },
+   {
+    "w": "monitor",
+    "p": "n.",
+    "d": "班长",
+    "e": "After the monitor, the logs showed a critical error in the database layer."
+   },
+   {
+    "w": "output",
+    "p": "n.",
+    "d": "产量",
+    "e": "The output between the microservices failed under high load conditions."
+   },
+   {
+    "w": "patch",
+    "p": "n.",
+    "d": "补钉",
+    "e": "The patch of the API endpoint returned a 500 internal server error."
+   },
+   {
+    "w": "metric",
+    "p": "adj.",
+    "d": " 公制的， 米制的",
+    "e": "Network metric spiked as millions of requests hit the server simultaneously."
+   },
+   {
+    "w": "setting",
+    "p": "n.",
+    "d": "背景，环境",
+    "e": "The setting of the deployment was verified through automated testing."
+   },
+   {
+    "w": "fail",
+    "p": "v.",
+    "d": "失败",
+    "e": "A fail in the firewall rules blocked all incoming connections."
+   },
+   {
+    "w": "secure",
+    "p": "adj.",
+    "d": "安全的，可靠的",
+    "e": "The secure of the new version was rolled back after the incident."
+   },
+   {
+    "w": "platform",
+    "p": "n.",
+    "d": "平台",
+    "e": "Memory platform caused the process to consume all available resources."
+   },
+   {
+    "w": "command",
+    "p": "v.",
+    "d": "命令，指挥",
+    "e": "The command crashed during the peak traffic hour, causing a system outage."
+   },
+   {
+    "w": "compress",
+    "p": "v.",
+    "d": "压紧，压缩",
+    "e": "The compress of the deployment process was monitored by the CI pipeline."
+   },
+   {
+    "w": "pipe",
+    "p": "n.",
+    "d": "管子，导管",
+    "e": "After the pipe, the logs showed a critical error in the database layer."
+   },
+   {
+    "w": "disk",
+    "p": "n.",
+    "d": "圆盘，唱片",
+    "e": "A scheduled disk was required to patch the security vulnerability."
+   },
+   {
+    "w": "health",
+    "p": "n.",
+    "d": "健康，健康状况",
+    "e": "The health of the API endpoint returned a 500 internal server error."
+   },
+   {
+    "w": "release",
+    "p": "vt.",
+    "d": " 释放， 排放",
+    "e": "The release was set to retry three times before giving up completely."
+   },
+   {
+    "w": "client",
+    "p": "n.",
+    "d": "客户",
+    "e": "Container client allowed the application to scale horizontally."
+   },
+   {
+    "w": "stream",
+    "p": "v.",
+    "d": " 流出， 涌出",
+    "e": "Memory stream caused the process to consume all available resources."
+   },
+   {
+    "w": "update",
+    "p": "v.",
+    "d": "更新，使现代化",
+    "e": "The update crashed during the peak traffic hour, causing a system outage."
+   },
+   {
+    "w": "variable",
+    "p": "adj.",
+    "d": "易变的",
+    "e": "A simple variable in the configuration file brought down the entire cluster."
+   },
+   {
+    "w": "stack",
+    "p": "n.",
+    "d": "堆，垛",
+    "e": "The stack between the microservices failed under high load conditions."
+   },
+   {
+    "w": "engine",
+    "p": "n.",
+    "d": "发动机，引擎",
+    "e": "The engine of the API endpoint returned a 500 internal server error."
+   },
+   {
+    "w": "alert",
+    "p": "adj.",
+    "d": "警觉的，留神的，注意的",
+    "e": "Network alert spiked as millions of requests hit the server simultaneously."
+   },
+   {
+    "w": "access",
+    "p": "n.",
+    "d": "接近",
+    "e": "The access was set to retry three times before giving up completely."
+   },
+   {
+    "w": "package",
+    "p": "n.",
+    "d": "包裹，包装",
+    "e": "A package in the firewall rules blocked all incoming connections."
+   },
+   {
+    "w": "container",
+    "p": "n.",
+    "d": " 容器",
+    "e": "The container of the new version was rolled back after the incident."
+   },
+   {
+    "w": "cloud",
+    "p": "n.",
+    "d": "云",
+    "e": "The cloud required root access to execute the system commands."
+   },
+   {
+    "w": "trace",
+    "p": "n.",
+    "d": "痕迹",
+    "e": "The trace crashed during the peak traffic hour, causing a system outage."
+   },
+   {
+    "w": "host",
+    "p": "n.",
+    "d": "主人",
+    "e": "The host of the deployment process was monitored by the CI pipeline."
+   },
+   {
+    "w": "process",
+    "p": "n.",
+    "d": "过程",
+    "e": "The process of the API endpoint returned a 500 internal server error."
+   },
+   {
+    "w": "framework",
+    "p": "n.",
+    "d": " 框架， 结构",
+    "e": "Network framework spiked as millions of requests hit the server simultaneously."
+   },
+   {
+    "w": "format",
+    "p": "n.",
+    "d": "设计，安排",
+    "e": "A simple format in the configuration file brought down the entire cluster."
+   },
+   {
+    "w": "execute",
+    "p": "vt.",
+    "d": " 将…处死",
+    "e": "Network execute spiked as millions of requests hit the server simultaneously."
+   },
+   {
+    "w": "filter",
+    "p": "v.",
+    "d": "过滤",
+    "e": "The filter was set to retry three times before giving up completely."
+   },
+   {
+    "w": "shell",
+    "p": "n.",
+    "d": "壳，贝壳",
+    "e": "Container shell allowed the application to scale horizontally."
+   },
+   {
+    "w": "build",
+    "p": "v.",
+    "d": "建筑",
+    "e": "The build of the deployment was verified through automated testing."
+   },
+   {
+    "w": "library",
+    "p": "n.",
+    "d": "图书馆",
+    "e": "A library in the firewall rules blocked all incoming connections."
+   },
+   {
+    "w": "thread",
+    "p": "n.",
+    "d": "线",
+    "e": "The thread of the new version was rolled back after the incident."
+   },
+   {
+    "w": "traffic",
+    "p": "n.",
+    "d": "交通，通行",
+    "e": "After the traffic, the logs showed a critical error in the database layer."
+   },
+   {
+    "w": "script",
+    "p": "n.",
+    "d": " 剧本， 广播稿",
+    "e": "The script between the microservices failed under high load conditions."
+   },
+   {
+    "w": "compile",
+    "p": "v.",
+    "d": "编辑，编制，搜集",
+    "e": "The compile of the API endpoint returned a 500 internal server error."
+   },
+   {
+    "w": "terminal",
+    "p": "n.",
+    "d": "终点站，航空站",
+    "e": "Container terminal allowed the application to scale horizontally."
+   },
+   {
+    "w": "voltage",
+    "p": "n.",
+    "d": " 电压",
+    "e": "Memory voltage caused the process to consume all available resources."
+   },
+   {
+    "w": "psychological",
+    "p": "adj.",
+    "d": "心理上的",
+    "e": "The psychological required root access to execute the system commands."
+   },
+   {
+    "w": "postage",
+    "p": "n.",
+    "d": " 邮费， 邮资",
+    "e": "The postage crashed during the peak traffic hour, causing a system outage."
+   },
+   {
+    "w": "catalog",
+    "p": "n.",
+    "d": "目录，目录册",
+    "e": "A simple catalog in the configuration file brought down the entire cluster."
+   },
+   {
+    "w": "unload",
+    "p": "v.",
+    "d": " 卸， 卸货",
+    "e": "The unload of the deployment process was monitored by the CI pipeline."
+   },
+   {
+    "w": "transport",
+    "p": "v.",
+    "d": "运输",
+    "e": "After the transport, the logs showed a critical error in the database layer."
+   },
+   {
+    "w": "catalogue",
+    "p": "v.",
+    "d": "把……编入目录",
+    "e": "The catalogue between the microservices failed under high load conditions."
+   },
+   {
+    "w": "portable",
+    "p": "adj.",
+    "d": " 便于携带的， 手提式的",
+    "e": "A scheduled portable was required to patch the security vulnerability."
+   },
+   {
+    "w": "criminology",
+    "p": "n.",
+    "d": " 犯罪学， 刑事学",
+    "e": "The criminology of the API endpoint returned a 500 internal server error."
+   },
+   {
+    "w": "export",
+    "p": "vt.",
+    "d": " 输出， 出口",
+    "e": "Network export spiked as millions of requests hit the server simultaneously."
+   },
+   {
+    "w": "hostile",
+    "p": "adj.",
+    "d": "敌方的",
+    "e": "Container hostile allowed the application to scale horizontally."
+   },
+   {
+    "w": "dialog",
+    "p": "n.",
+    "d": "对话，对白",
+    "e": "The dialog of the deployment was verified through automated testing."
+   },
+   {
+    "w": "shortage",
+    "p": "n.",
+    "d": "不足，缺少，不足额",
+    "e": "A shortage in the firewall rules blocked all incoming connections."
+   },
+   {
+    "w": "logic",
+    "p": "n.",
+    "d": "逻辑，推理",
+    "e": "The logic of the new version was rolled back after the incident."
+   },
+   {
+    "w": "psychologist",
+    "p": "n.",
+    "d": "心理学家",
+    "e": "Memory psychologist caused the process to consume all available resources."
+   }
+  ]
+ },
+ "mystic": {
+  "name": "神秘学·命理",
+  "icon": "🔮",
+  "theme": "mys",
+  "progressClass": "mys-progress",
+  "desc": "星辰、塔罗与魔法——命运的语言",
+  "words": [
+   {
+    "w": "lightning",
+    "p": "n.",
+    "d": " 闪电， 电光",
+    "e": "The lightning of the stars revealed a path hidden from mortal eyes."
+   },
+   {
+    "w": "dusk",
+    "p": "n.",
+    "d": "薄暮，黄昏，幽暗",
+    "e": "The tarot reader's dusk spoke of transformations yet to come."
+   },
+   {
+    "w": "air",
+    "p": "n.",
+    "d": "空气",
+    "e": "The air between the elements must be maintained for harmony."
+   },
+   {
+    "w": "light",
+    "p": "adj.",
+    "d": "轻的，少量的",
+    "e": "Her light with the spiritual realm grew stronger through meditation."
+   },
+   {
+    "w": "wheel",
+    "p": "n.",
+    "d": "轮，车轮",
+    "e": "The wheel of the prophecy echoed through the halls of time."
+   },
+   {
+    "w": "fire",
+    "p": "n.",
+    "d": "火",
+    "e": "A fire of pure energy surrounded the circle of protection."
+   },
+   {
+    "w": "cycle",
+    "p": "n.",
+    "d": "循环（周期）",
+    "e": "Through cycle and wisdom, the mage unlocked the ancient secrets."
+   },
+   {
+    "w": "seal",
+    "p": "n.",
+    "d": "封铅，封条",
+    "e": "The seal of fate could not be altered by mortal hands alone."
+   },
+   {
+    "w": "pure",
+    "p": "adj.",
+    "d": "纯粹的",
+    "e": "The pure ceremony marked the transition between worlds."
+   },
+   {
+    "w": "mystery",
+    "p": "n.",
+    "d": "迷，神秘的事物",
+    "e": "Her mystery allowed her to glimpse the threads of destiny."
+   },
+   {
+    "w": "charm",
+    "p": "n.",
+    "d": "迷人的特性，魅力",
+    "e": "The charm of the universe resonated within the sacred space."
+   },
+   {
+    "w": "water",
+    "p": "n.",
+    "d": "水",
+    "e": "The water of the stars revealed a path hidden from mortal eyes."
+   },
+   {
+    "w": "luck",
+    "p": "n.",
+    "d": "运气",
+    "e": "A luck of ancient power resonated within the crystal chamber."
+   },
+   {
+    "w": "symbol",
+    "p": "n.",
+    "d": "象征，标志",
+    "e": "Under the full moon, the symbol of the ritual reached its peak."
+   },
+   {
+    "w": "element",
+    "p": "n.",
+    "d": "元素，要素",
+    "e": "The element between the elements must be maintained for harmony."
+   },
+   {
+    "w": "harmony",
+    "p": "n.",
+    "d": "调合，协调，和谐",
+    "e": "Her harmony with the spiritual realm grew stronger through meditation."
+   },
+   {
+    "w": "temple",
+    "p": "n.",
+    "d": " 圣堂， 神殿， 庙宇",
+    "e": "The temple of the cosmos was written in the patterns of the stars."
+   },
+   {
+    "w": "moon",
+    "p": "n.",
+    "d": "月球，月亮",
+    "e": "Through moon and wisdom, the mage unlocked the ancient secrets."
+   },
+   {
+    "w": "dawn",
+    "p": "n.",
+    "d": "黎明",
+    "e": "The dawn of fate could not be altered by mortal hands alone."
+   },
+   {
+    "w": "planet",
+    "p": "n.",
+    "d": " 行星",
+    "e": "The planet ceremony marked the transition between worlds."
+   },
+   {
+    "w": "balance",
+    "p": "vt.",
+    "d": "使平衡",
+    "e": "Her balance allowed her to glimpse the threads of destiny."
+   },
+   {
+    "w": "holy",
+    "p": "adj.",
+    "d": "神圣的",
+    "e": "The holy of the universe resonated within the sacred space."
+   },
+   {
+    "w": "candle",
+    "p": "n.",
+    "d": "蜡烛",
+    "e": "A candle of ancient power resonated within the crystal chamber."
+   },
+   {
+    "w": "ring",
+    "p": "n.",
+    "d": "拳击台",
+    "e": "Her ring with the spiritual realm grew stronger through meditation."
+   },
+   {
+    "w": "wisdom",
+    "p": "n.",
+    "d": " 智慧， 才智",
+    "e": "A wisdom of pure energy surrounded the circle of protection."
+   },
+   {
+    "w": "circle",
+    "p": "n.",
+    "d": "圆，圆周",
+    "e": "The circle of the cosmos was written in the patterns of the stars."
+   },
+   {
+    "w": "vibrate",
+    "p": "v.",
+    "d": "使颤动",
+    "e": "The vibrate of fate could not be altered by mortal hands alone."
+   },
+   {
+    "w": "frequency",
+    "p": "n.",
+    "d": "屡次",
+    "e": "A frequency of light pierced through the veil of darkness."
+   },
+   {
+    "w": "wise",
+    "p": "adj.",
+    "d": "聪明的，有智慧的",
+    "e": "The wise of the universe resonated within the sacred space."
+   },
+   {
+    "w": "sign",
+    "p": "n.",
+    "d": "符号",
+    "e": "A sign of ancient power resonated within the crystal chamber."
+   },
+   {
+    "w": "midnight",
+    "p": "n.",
+    "d": "午夜，子夜，夜半",
+    "e": "The tarot reader's midnight spoke of transformations yet to come."
+   },
+   {
+    "w": "dream",
+    "p": "n.",
+    "d": "梦",
+    "e": "The dream between the elements must be maintained for harmony."
+   },
+   {
+    "w": "thunder",
+    "p": "n.",
+    "d": "雷",
+    "e": "The thunder of the cosmos was written in the patterns of the stars."
+   },
+   {
+    "w": "crystal",
+    "p": "n.",
+    "d": "水晶，结晶体",
+    "e": "The crystal of fate could not be altered by mortal hands alone."
+   },
+   {
+    "w": "infinite",
+    "p": "adj.",
+    "d": "无限的",
+    "e": "The infinite ceremony marked the transition between worlds."
+   },
+   {
+    "w": "fortune",
+    "p": "n.",
+    "d": "命运，运气",
+    "e": "The fortune of the stars revealed a path hidden from mortal eyes."
+   },
+   {
+    "w": "sunlight",
+    "p": "n.",
+    "d": " 日光， 阳光",
+    "e": "Her sunlight with the spiritual realm grew stronger through meditation."
+   },
+   {
+    "w": "fairly",
+    "p": "adv.",
+    "d": "相当",
+    "e": "The fairly of the prophecy echoed through the halls of time."
+   },
+   {
+    "w": "aircraft",
+    "p": "n.",
+    "d": " 飞机， 飞行器",
+    "e": "A aircraft of pure energy surrounded the circle of protection."
+   },
+   {
+    "w": "judgement",
+    "p": "n.",
+    "d": "判断，决定",
+    "e": "Through judgement and wisdom, the mage unlocked the ancient secrets."
+   },
+   {
+    "w": "sunshine",
+    "p": "n.",
+    "d": " 日光， 阳光",
+    "e": "A sunshine of light pierced through the veil of darkness."
+   },
+   {
+    "w": "engagement",
+    "p": "n.",
+    "d": "约会",
+    "e": "The engagement ceremony marked the transition between worlds."
+   },
+   {
+    "w": "fairy",
+    "p": "n.",
+    "d": " 小精灵， 小仙子",
+    "e": "Her fairy allowed her to glimpse the threads of destiny."
+   },
+   {
+    "w": "fair",
+    "p": "adj.",
+    "d": "公平的",
+    "e": "The fair of the universe resonated within the sacred space."
+   },
+   {
+    "w": "misunderstand",
+    "p": "vt.",
+    "d": " 误解， 误会",
+    "e": "The misunderstand of the stars revealed a path hidden from mortal eyes."
+   },
+   {
+    "w": "dairy",
+    "p": "adj.",
+    "d": " 乳制品的",
+    "e": "A dairy of ancient power resonated within the crystal chamber."
+   },
+   {
+    "w": "arrangement",
+    "p": "n.",
+    "d": "整理，排列",
+    "e": "The tarot reader's arrangement spoke of transformations yet to come."
+   },
+   {
+    "w": "signature",
+    "p": "n.",
+    "d": " 署名， 签字， 签名",
+    "e": "Under the full moon, the signature of the ritual reached its peak."
+   },
+   {
+    "w": "startup",
+    "p": "n.",
+    "d": "启动，开办",
+    "e": "The startup between the elements must be maintained for harmony."
+   },
+   {
+    "w": "downstairs",
+    "p": "adv.",
+    "d": "在楼下",
+    "e": "Her downstairs with the spiritual realm grew stronger through meditation."
+   },
+   {
+    "w": "resign",
+    "p": "vi.",
+    "d": "辞职",
+    "e": "The resign of the prophecy echoed through the halls of time."
+   },
+   {
+    "w": "hair",
+    "p": "n.",
+    "d": "头发，毛发",
+    "e": "A hair of pure energy surrounded the circle of protection."
+   },
+   {
+    "w": "considering",
+    "p": "prep.",
+    "d": " 鉴于， 考虑到， 顾及",
+    "e": "The considering of the cosmos was written in the patterns of the stars."
+   },
+   {
+    "w": "engineering",
+    "p": "n.",
+    "d": "工程，工程学",
+    "e": "Through engineering and wisdom, the mage unlocked the ancient secrets."
+   },
+   {
+    "w": "assign",
+    "p": "v.",
+    "d": "指派",
+    "e": "The assign of fate could not be altered by mortal hands alone."
+   },
+   {
+    "w": "likewise",
+    "p": "adv.",
+    "d": "同样地",
+    "e": "A likewise of light pierced through the veil of darkness."
+   },
+   {
+    "w": "fireman",
+    "p": "n.",
+    "d": "消防队员",
+    "e": "The fireman ceremony marked the transition between worlds."
+   },
+   {
+    "w": "airport",
+    "p": "n.",
+    "d": "机场，航空站",
+    "e": "Her airport allowed her to glimpse the threads of destiny."
+   },
+   {
+    "w": "affair",
+    "p": "n.",
+    "d": "事情，事件",
+    "e": "The affair of the stars revealed a path hidden from mortal eyes."
+   },
+   {
+    "w": "airline",
+    "p": "n.",
+    "d": "航空公司",
+    "e": "A airline of ancient power resonated within the crystal chamber."
+   },
+   {
+    "w": "daylight",
+    "p": "n.",
+    "d": "白昼，日光",
+    "e": "The tarot reader's daylight spoke of transformations yet to come."
+   },
+   {
+    "w": "bicycle",
+    "p": "n.",
+    "d": "自行车，脚踏车",
+    "e": "The bicycle between the elements must be maintained for harmony."
+   },
+   {
+    "w": "highlight",
+    "p": "vt.",
+    "d": "强调，突出，使显著",
+    "e": "Her highlight with the spiritual realm grew stronger through meditation."
+   },
+   {
+    "w": "skyrocket",
+    "p": "v.",
+    "d": "突升，猛涨",
+    "e": "The skyrocket of the prophecy echoed through the halls of time."
+   },
+   {
+    "w": "upbringing",
+    "p": "n.",
+    "d": "养育，培养，教养",
+    "e": "The upbringing of the cosmos was written in the patterns of the stars."
+   },
+   {
+    "w": "during",
+    "p": "prep.",
+    "d": "在…期间",
+    "e": "Through during and wisdom, the mage unlocked the ancient secrets."
+   },
+   {
+    "w": "waterproof",
+    "p": "adj.",
+    "d": "不透水的，防水的",
+    "e": "The waterproof of fate could not be altered by mortal hands alone."
+   },
+   {
+    "w": "startle",
+    "p": "v.",
+    "d": "吃惊",
+    "e": "A startle of light pierced through the veil of darkness."
+   },
+   {
+    "w": "string",
+    "p": "vi.",
+    "d": " 连成一串",
+    "e": "The string of the stars revealed a path hidden from mortal eyes."
+   },
+   {
+    "w": "lucky",
+    "p": "adj.",
+    "d": " 幸运的， 侥幸的",
+    "e": "A lucky of ancient power resonated within the crystal chamber."
+   },
+   {
+    "w": "aural",
+    "p": "adj.",
+    "d": "耳的，听觉的",
+    "e": "The tarot reader's aural spoke of transformations yet to come."
+   },
+   {
+    "w": "stare",
+    "p": "n&vi.",
+    "d": " 盯， 凝视",
+    "e": "The stare between the elements must be maintained for harmony."
+   },
+   {
+    "w": "usage",
+    "p": "n.",
+    "d": " 使用",
+    "e": "Her usage with the spiritual realm grew stronger through meditation."
+   },
+   {
+    "w": "assignment",
+    "p": "n.",
+    "d": " 任务， 指定的作业",
+    "e": "The assignment of the prophecy echoed through the halls of time."
+   },
+   {
+    "w": "significance",
+    "p": "n.",
+    "d": "意义，意味",
+    "e": "A significance of pure energy surrounded the circle of protection."
+   },
+   {
+    "w": "sausage",
+    "p": "n.",
+    "d": "香肠，腊肠",
+    "e": "Through sausage and wisdom, the mage unlocked the ancient secrets."
+   },
+   {
+    "w": "bring",
+    "p": "v.",
+    "d": "带来",
+    "e": "The bring of fate could not be altered by mortal hands alone."
+   },
+   {
+    "w": "significant",
+    "p": "n.",
+    "d": "有意义的",
+    "e": "A significant of light pierced through the veil of darkness."
+   },
+   {
+    "w": "flight",
+    "p": "n.",
+    "d": "航班",
+    "e": "The flight ceremony marked the transition between worlds."
+   },
+   {
+    "w": "management",
+    "p": "n.",
+    "d": " 管理",
+    "e": "Her management allowed her to glimpse the threads of destiny."
+   },
+   {
+    "w": "haircut",
+    "p": "n.",
+    "d": "理发",
+    "e": "The haircut of the universe resonated within the sacred space."
+   }
+  ]
+ },
+ "galgame": {
+  "name": "Galgame·轻小说",
+  "icon": "💕",
+  "theme": "gl",
+  "progressClass": "gl-progress",
+  "desc": "樱花、告白与牵绊——青春的物语",
+  "words": [
+   {
+    "w": "club",
+    "p": "n.",
+    "d": "俱乐部，夜总会",
+    "e": "The club of cherry blossoms filled the spring campus with beauty."
+   },
+   {
+    "w": "beach",
+    "p": "n.",
+    "d": "海滩，湖滩，河滩",
+    "e": "Her beach confession under the sakura tree changed everything."
+   },
+   {
+    "w": "joy",
+    "p": "n.",
+    "d": "欢乐，喜悦",
+    "e": "A joy of bittersweet memories lingered in the empty classroom."
+   },
+   {
+    "w": "miss",
+    "p": "n.",
+    "d": "小姐",
+    "e": "The miss between them grew deeper with each passing season."
+   },
+   {
+    "w": "friend",
+    "p": "n.",
+    "d": "朋友，友人",
+    "e": "His friend smile could brighten even the darkest of days."
+   },
+   {
+    "w": "moment",
+    "p": "n.",
+    "d": "片刻，瞬间，时刻",
+    "e": "The moment of first love was both exciting and terrifying."
+   },
+   {
+    "w": "campus",
+    "p": "n.",
+    "d": " 校园， 学校场地",
+    "e": "Summer campus at the beach created memories that would last forever."
+   },
+   {
+    "w": "gift",
+    "p": "n.",
+    "d": "礼物，赠品",
+    "e": "A gift of tears fell as she read the farewell letter."
+   },
+   {
+    "w": "passion",
+    "p": "n.",
+    "d": "激情，热情",
+    "e": "The passion of the school festival brought everyone closer together."
+   },
+   {
+    "w": "hope",
+    "p": "n&vt&vi.",
+    "d": "希望",
+    "e": "His hope to always be by her side was unbreakable."
+   },
+   {
+    "w": "confess",
+    "p": "vt.",
+    "d": " 供认， 坦白",
+    "e": "The confess of their reunion after years apart was overwhelming."
+   },
+   {
+    "w": "sunset",
+    "p": "n.",
+    "d": " 日落",
+    "e": "A sunset of hope kept them going through the difficult times."
+   },
+   {
+    "w": "cry",
+    "p": "v.",
+    "d": "哭，哭泣",
+    "e": "The cry sunset painted the sky in shades of pink and gold."
+   },
+   {
+    "w": "whisper",
+    "p": "v.",
+    "d": "低声地讲",
+    "e": "Her whisper whispered through the telephone late at night."
+   },
+   {
+    "w": "meeting",
+    "p": "n.",
+    "d": "聚集，会合，会见",
+    "e": "The meeting of graduating together was their shared dream."
+   },
+   {
+    "w": "emotion",
+    "p": "n.",
+    "d": " 情感， 感情",
+    "e": "The emotion of cherry blossoms filled the spring campus with beauty."
+   },
+   {
+    "w": "sorrow",
+    "p": "n.",
+    "d": "悲痛，悲哀，悲伤",
+    "e": "A sorrow of bittersweet memories lingered in the empty classroom."
+   },
+   {
+    "w": "lonely",
+    "p": "adj.",
+    "d": "孤独的",
+    "e": "The lonely between them grew deeper with each passing season."
+   },
+   {
+    "w": "date",
+    "p": "n.",
+    "d": "日期",
+    "e": "The date of first love was both exciting and terrifying."
+   },
+   {
+    "w": "wind",
+    "p": "v.",
+    "d": "绕，缠绕",
+    "e": "Summer wind at the beach created memories that would last forever."
+   },
+   {
+    "w": "tender",
+    "p": "adj.",
+    "d": "嫩的",
+    "e": "A tender of tears fell as she read the farewell letter."
+   },
+   {
+    "w": "farewell",
+    "p": "n.",
+    "d": " 告别， 欢送会",
+    "e": "The farewell of the school festival brought everyone closer together."
+   },
+   {
+    "w": "heart",
+    "p": "n.",
+    "d": "心，内心",
+    "e": "His heart to always be by her side was unbreakable."
+   },
+   {
+    "w": "youth",
+    "p": "n.",
+    "d": "青春",
+    "e": "The youth of their reunion after years apart was overwhelming."
+   },
+   {
+    "w": "grow",
+    "p": "v.",
+    "d": "生长",
+    "e": "A grow of hope kept them going through the difficult times."
+   },
+   {
+    "w": "blossom",
+    "p": "n.",
+    "d": "花，开花",
+    "e": "The blossom sunset painted the sky in shades of pink and gold."
+   },
+   {
+    "w": "kiss",
+    "p": "v.",
+    "d": "吻",
+    "e": "The kiss of graduating together was their shared dream."
+   },
+   {
+    "w": "love",
+    "p": "v.",
+    "d": "爱，喜欢",
+    "e": "The love of cherry blossoms filled the spring campus with beauty."
+   },
+   {
+    "w": "sunrise",
+    "p": "n.",
+    "d": " 日出",
+    "e": "Her sunrise confession under the sakura tree changed everything."
+   },
+   {
+    "w": "note",
+    "p": "n.",
+    "d": "笔记",
+    "e": "A note of bittersweet memories lingered in the empty classroom."
+   },
+   {
+    "w": "cherry",
+    "p": "n.",
+    "d": "樱桃",
+    "e": "The cherry between them grew deeper with each passing season."
+   },
+   {
+    "w": "forever",
+    "p": "adv.",
+    "d": "永远，总是，老是",
+    "e": "The forever of first love was both exciting and terrifying."
+   },
+   {
+    "w": "alone",
+    "p": "adj.",
+    "d": "单独的",
+    "e": "Summer alone at the beach created memories that would last forever."
+   },
+   {
+    "w": "innocent",
+    "p": "adj.",
+    "d": "无辜的，天真的",
+    "e": "A innocent of tears fell as she read the farewell letter."
+   },
+   {
+    "w": "change",
+    "p": "n.",
+    "d": "改变，变化",
+    "e": "The change of the school festival brought everyone closer together."
+   },
+   {
+    "w": "forget",
+    "p": "v.",
+    "d": "忘记，遗忘",
+    "e": "His forget to always be by her side was unbreakable."
+   },
+   {
+    "w": "letter",
+    "p": "n.",
+    "d": "信",
+    "e": "The letter of their reunion after years apart was overwhelming."
+   },
+   {
+    "w": "encounter",
+    "p": "v.",
+    "d": "遭遇，遇到",
+    "e": "A encounter of hope kept them going through the difficult times."
+   },
+   {
+    "w": "happy",
+    "p": "adj.",
+    "d": "快乐的",
+    "e": "The happy of graduating together was their shared dream."
+   },
+   {
+    "w": "call",
+    "p": "v.",
+    "d": "把…叫做",
+    "e": "A call of bittersweet memories lingered in the empty classroom."
+   },
+   {
+    "w": "promise",
+    "p": "n.",
+    "d": "诺言",
+    "e": "His promise smile could brighten even the darkest of days."
+   },
+   {
+    "w": "class",
+    "p": "n.",
+    "d": "班，班级",
+    "e": "The class of first love was both exciting and terrifying."
+   },
+   {
+    "w": "message",
+    "p": "n.",
+    "d": "信息，消息",
+    "e": "Summer message at the beach created memories that would last forever."
+   },
+   {
+    "w": "rain",
+    "p": "n.",
+    "d": "雨，雨水",
+    "e": "A rain of tears fell as she read the farewell letter."
+   },
+   {
+    "w": "flower",
+    "p": "n.",
+    "d": "花，花卉",
+    "e": "The flower of the school festival brought everyone closer together."
+   },
+   {
+    "w": "music",
+    "p": "n.",
+    "d": "音乐，乐曲，乐谱",
+    "e": "His music to always be by her side was unbreakable."
+   },
+   {
+    "w": "bitter",
+    "p": "adj.",
+    "d": "痛苦的",
+    "e": "The bitter of their reunion after years apart was overwhelming."
+   },
+   {
+    "w": "gentle",
+    "p": "adj.",
+    "d": "和蔼的",
+    "e": "The gentle sunset painted the sky in shades of pink and gold."
+   },
+   {
+    "w": "bridge",
+    "p": "n.",
+    "d": "桥，桥梁",
+    "e": "The bridge of graduating together was their shared dream."
+   },
+   {
+    "w": "trust",
+    "p": "n.",
+    "d": "信任",
+    "e": "The trust of cherry blossoms filled the spring campus with beauty."
+   },
+   {
+    "w": "feeling",
+    "p": "n.",
+    "d": "感情",
+    "e": "Her feeling confession under the sakura tree changed everything."
+   },
+   {
+    "w": "remember",
+    "p": "v.",
+    "d": "记得，想起",
+    "e": "The remember of first love was both exciting and terrifying."
+   },
+   {
+    "w": "memory",
+    "p": "n.",
+    "d": "记忆",
+    "e": "Summer memory at the beach created memories that would last forever."
+   },
+   {
+    "w": "spring",
+    "p": "v.",
+    "d": "跳，跃",
+    "e": "A spring of tears fell as she read the farewell letter."
+   },
+   {
+    "w": "silence",
+    "p": "n.",
+    "d": "沉默",
+    "e": "The silence of the school festival brought everyone closer together."
+   },
+   {
+    "w": "childhood",
+    "p": "n.",
+    "d": " 童年， 幼年， 早期",
+    "e": "The childhood of their reunion after years apart was overwhelming."
+   },
+   {
+    "w": "retrain",
+    "p": "v.",
+    "d": "再教育",
+    "e": "The retrain sunset painted the sky in shades of pink and gold."
+   },
+   {
+    "w": "restrain",
+    "p": "vt.",
+    "d": " 阻止， 控制",
+    "e": "Her restrain whispered through the telephone late at night."
+   },
+   {
+    "w": "strain",
+    "p": "v.",
+    "d": "拉紧",
+    "e": "The strain of graduating together was their shared dream."
+   },
+   {
+    "w": "restraint",
+    "p": "n.",
+    "d": "抑制",
+    "e": "Her restraint confession under the sakura tree changed everything."
+   },
+   {
+    "w": "huge",
+    "p": "adj.",
+    "d": "巨大的，庞大的",
+    "e": "The huge of first love was both exciting and terrifying."
+   },
+   {
+    "w": "joyful",
+    "p": "adj.",
+    "d": "十分喜悦的，快乐的",
+    "e": "Summer joyful at the beach created memories that would last forever."
+   },
+   {
+    "w": "hopeful",
+    "p": "adj.",
+    "d": " 有希望的",
+    "e": "A hopeful of tears fell as she read the farewell letter."
+   },
+   {
+    "w": "beloved",
+    "p": "adj.",
+    "d": " 所钟爱的， 所爱戴的",
+    "e": "The beloved of the school festival brought everyone closer together."
+   },
+   {
+    "w": "missing",
+    "p": "adj.",
+    "d": "缺掉的，失去的",
+    "e": "His missing to always be by her side was unbreakable."
+   },
+   {
+    "w": "rainy",
+    "p": "adj.",
+    "d": "下雨的，多雨的",
+    "e": "A rainy of hope kept them going through the difficult times."
+   },
+   {
+    "w": "glove",
+    "p": "n.",
+    "d": " 手套",
+    "e": "The glove sunset painted the sky in shades of pink and gold."
+   },
+   {
+    "w": "lover",
+    "p": "n.",
+    "d": "爱好者",
+    "e": "Her lover whispered through the telephone late at night."
+   },
+   {
+    "w": "grain",
+    "p": "n.",
+    "d": "谷物，谷粒",
+    "e": "The grain of graduating together was their shared dream."
+   },
+   {
+    "w": "permission",
+    "p": "n.",
+    "d": " 允许， 许可， 准许",
+    "e": "Her permission confession under the sakura tree changed everything."
+   },
+   {
+    "w": "commission",
+    "p": "n.",
+    "d": "委任状",
+    "e": "A commission of bittersweet memories lingered in the empty classroom."
+   },
+   {
+    "w": "admission",
+    "p": "n.",
+    "d": "允许进入",
+    "e": "The admission between them grew deeper with each passing season."
+   },
+   {
+    "w": "candidate",
+    "p": "n.",
+    "d": "申请求职者",
+    "e": "His candidate smile could brighten even the darkest of days."
+   },
+   {
+    "w": "emission",
+    "p": "n.",
+    "d": "排放，辐射",
+    "e": "The emission of first love was both exciting and terrifying."
+   },
+   {
+    "w": "classical",
+    "p": "adj.",
+    "d": " 古典的， 经典的",
+    "e": "Summer classical at the beach created memories that would last forever."
+   },
+   {
+    "w": "classify",
+    "p": "v.",
+    "d": "把…分类",
+    "e": "The classify of the school festival brought everyone closer together."
+   },
+   {
+    "w": "classic",
+    "p": "adj.",
+    "d": "最优秀的，典型的，标准的",
+    "e": "His classic to always be by her side was unbreakable."
+   },
+   {
+    "w": "drain",
+    "p": "v.",
+    "d": "排去，放水",
+    "e": "The drain of their reunion after years apart was overwhelming."
+   },
+   {
+    "w": "exchange",
+    "p": "n&v.",
+    "d": " 交换",
+    "e": "A exchange of hope kept them going through the difficult times."
+   },
+   {
+    "w": "accommodate",
+    "p": "v.",
+    "d": "适合， 提供住宿",
+    "e": "Her accommodate whispered through the telephone late at night."
+   },
+   {
+    "w": "missile",
+    "p": "n.",
+    "d": "发射物",
+    "e": "The missile of cherry blossoms filled the spring campus with beauty."
+   },
+   {
+    "w": "lovely",
+    "p": "adj.",
+    "d": "可爱的",
+    "e": "Her lovely confession under the sakura tree changed everything."
+   },
+   {
+    "w": "up-to-date",
+    "p": "adj.",
+    "d": " 直到最近的， 现代的",
+    "e": "His up-to-date smile could brighten even the darkest of days."
+   },
+   {
+    "w": "musician",
+    "p": "n.",
+    "d": "音乐家",
+    "e": "The musician of first love was both exciting and terrifying."
+   },
+   {
+    "w": "enjoy",
+    "p": "v.",
+    "d": "享受",
+    "e": "Summer enjoy at the beach created memories that would last forever."
+   },
+   {
+    "w": "friendly",
+    "p": "adj.",
+    "d": "友好的，友谊的",
+    "e": "A friendly of tears fell as she read the farewell letter."
+   },
+   {
+    "w": "recall",
+    "p": "v.",
+    "d": "回想",
+    "e": "His recall to always be by her side was unbreakable."
+   },
+   {
+    "w": "growth",
+    "p": "n.",
+    "d": "增长",
+    "e": "The growth of their reunion after years apart was overwhelming."
+   },
+   {
+    "w": "classification",
+    "p": "n.",
+    "d": " 分类， 分级， 分类法",
+    "e": "A classification of hope kept them going through the difficult times."
+   },
+   {
+    "w": "transmission",
+    "p": "n.",
+    "d": "传送",
+    "e": "The transmission sunset painted the sky in shades of pink and gold."
+   },
+   {
+    "w": "bitterly",
+    "p": "adv.",
+    "d": "苦苦地",
+    "e": "Her bitterly whispered through the telephone late at night."
+   },
+   {
+    "w": "dismiss",
+    "p": "v.",
+    "d": "不再考虑",
+    "e": "The dismiss of graduating together was their shared dream."
+   }
+  ]
+ },
+ "biolab": {
+  "name": "生物实验·医学",
+  "icon": "🧬",
+  "theme": "bio",
+  "progressClass": "bio-progress",
+  "desc": "细胞、基因与实验——生命科学的语言",
+  "words": [
+   {
+    "w": "surgery",
+    "p": "n.",
+    "d": "外科，外科手术",
+    "e": "The surgery divided rapidly under the microscope's observation."
+   },
+   {
+    "w": "organism",
+    "p": "n.",
+    "d": "生物体",
+    "e": "The organism of the experiment was carefully recorded in the lab notebook."
+   },
+   {
+    "w": "data",
+    "p": "n.",
+    "d": "数据",
+    "e": "The data process required strict sterile conditions to avoid contamination."
+   },
+   {
+    "w": "cure",
+    "p": "v.",
+    "d": "医治",
+    "e": "A cure of the blood sample confirmed the presence of antibodies."
+   },
+   {
+    "w": "blood",
+    "p": "n.",
+    "d": "血，血液",
+    "e": "The blood between the enzyme and substrate was highly specific."
+   },
+   {
+    "w": "drug",
+    "p": "n.",
+    "d": "药，药物，药材",
+    "e": "Through drug observation, the biologist discovered a new species."
+   },
+   {
+    "w": "organ",
+    "p": "n.",
+    "d": "器官",
+    "e": "The organ of the disease depended on early diagnosis and treatment."
+   },
+   {
+    "w": "muscle",
+    "p": "n.",
+    "d": "肌肉，肌",
+    "e": "A muscle in the patient's condition required immediate surgery."
+   },
+   {
+    "w": "cancer",
+    "p": "n.",
+    "d": "癌，癌症，肿瘤",
+    "e": "The cancer therapy targeted the cancer cells without harming healthy tissue."
+   },
+   {
+    "w": "sample",
+    "p": "n.",
+    "d": "样品，试样，样本",
+    "e": "The sample of the organism adapted to changes in its environment."
+   },
+   {
+    "w": "examine",
+    "p": "v.",
+    "d": "检查，仔细观察",
+    "e": "The examine of the experiment proved the scientist's hypothesis correct."
+   },
+   {
+    "w": "lab",
+    "p": "n.",
+    "d": "实验室，研究室",
+    "e": "The lab research led to groundbreaking medical discoveries."
+   },
+   {
+    "w": "therapy",
+    "p": "n.",
+    "d": " 治疗， 理疗",
+    "e": "A therapy in the DNA sequence caused a rare genetic disorder."
+   },
+   {
+    "w": "birth",
+    "p": "n.",
+    "d": "分娩，出生",
+    "e": "The birth of the experiment was carefully recorded in the lab notebook."
+   },
+   {
+    "w": "disease",
+    "p": "n.",
+    "d": " 病， 疾病",
+    "e": "Under the disease, the cell structure revealed its complex organization."
+   },
+   {
+    "w": "live",
+    "p": "v.",
+    "d": "居住",
+    "e": "The live process required strict sterile conditions to avoid contamination."
+   },
+   {
+    "w": "breath",
+    "p": "n.",
+    "d": "气息，呼吸",
+    "e": "A breath of the blood sample confirmed the presence of antibodies."
+   },
+   {
+    "w": "protein",
+    "p": "n.",
+    "d": "蛋白质，朊",
+    "e": "The protein between the enzyme and substrate was highly specific."
+   },
+   {
+    "w": "nature",
+    "p": "n.",
+    "d": "大自然",
+    "e": "Through nature observation, the biologist discovered a new species."
+   },
+   {
+    "w": "cell",
+    "p": "n.",
+    "d": "细胞",
+    "e": "A cell in the patient's condition required immediate surgery."
+   },
+   {
+    "w": "result",
+    "p": "vi.",
+    "d": " 发生",
+    "e": "A result of the virus revealed how it infected host cells."
+   },
+   {
+    "w": "virus",
+    "p": "n.",
+    "d": " 病毒",
+    "e": "The virus of the experiment proved the scientist's hypothesis correct."
+   },
+   {
+    "w": "biology",
+    "p": "n.",
+    "d": " 生物学， 生态学",
+    "e": "The biology research led to groundbreaking medical discoveries."
+   },
+   {
+    "w": "gene",
+    "p": "n.",
+    "d": " 基因",
+    "e": "The gene divided rapidly under the microscope's observation."
+   },
+   {
+    "w": "nerve",
+    "p": "n.",
+    "d": " 神经",
+    "e": "A nerve in the DNA sequence caused a rare genetic disorder."
+   },
+   {
+    "w": "measure",
+    "p": "n.",
+    "d": "分量，尺寸，量具，测量",
+    "e": "The measure of the experiment was carefully recorded in the lab notebook."
+   },
+   {
+    "w": "doctor",
+    "p": "n.",
+    "d": "医生，医师",
+    "e": "Under the doctor, the cell structure revealed its complex organization."
+   },
+   {
+    "w": "tumor",
+    "p": "n.",
+    "d": "瘤",
+    "e": "A tumor of the blood sample confirmed the presence of antibodies."
+   },
+   {
+    "w": "evolution",
+    "p": "n.",
+    "d": "进化，演化",
+    "e": "The evolution between the enzyme and substrate was highly specific."
+   },
+   {
+    "w": "fever",
+    "p": "n.",
+    "d": "发热，发烧",
+    "e": "Through fever observation, the biologist discovered a new species."
+   },
+   {
+    "w": "species",
+    "p": "n.",
+    "d": " 种， 类",
+    "e": "A species in the patient's condition required immediate surgery."
+   },
+   {
+    "w": "bacteria",
+    "p": "n.",
+    "d": "细菌",
+    "e": "The bacteria of the organism adapted to changes in its environment."
+   },
+   {
+    "w": "analyze",
+    "p": "v.",
+    "d": "分析",
+    "e": "A analyze of the virus revealed how it infected host cells."
+   },
+   {
+    "w": "life",
+    "p": "n.",
+    "d": "生命",
+    "e": "The life of the experiment proved the scientist's hypothesis correct."
+   },
+   {
+    "w": "tissue",
+    "p": "n.",
+    "d": " 组织",
+    "e": "The tissue research led to groundbreaking medical discoveries."
+   },
+   {
+    "w": "treatment",
+    "p": "n.",
+    "d": "待遇",
+    "e": "The treatment divided rapidly under the microscope's observation."
+   },
+   {
+    "w": "patient",
+    "p": "adj.",
+    "d": "忍耐的",
+    "e": "A patient of the blood sample confirmed the presence of antibodies."
+   },
+   {
+    "w": "brain",
+    "p": "n.",
+    "d": "脑，脑髓",
+    "e": "The brain of the disease depended on early diagnosis and treatment."
+   },
+   {
+    "w": "chemistry",
+    "p": "n.",
+    "d": "化学",
+    "e": "The chemistry therapy targeted the cancer cells without harming healthy tissue."
+   },
+   {
+    "w": "microscope",
+    "p": "n.",
+    "d": "显微镜",
+    "e": "The microscope of the organism adapted to changes in its environment."
+   },
+   {
+    "w": "medicine",
+    "p": "n.",
+    "d": "内服药",
+    "e": "The medicine of the experiment proved the scientist's hypothesis correct."
+   },
+   {
+    "w": "experiment",
+    "p": "n.",
+    "d": "实验",
+    "e": "The experiment research led to groundbreaking medical discoveries."
+   },
+   {
+    "w": "oxygen",
+    "p": "n.",
+    "d": " 氧， 氧气",
+    "e": "Under the oxygen, the cell structure revealed its complex organization."
+   },
+   {
+    "w": "physics",
+    "p": "n.",
+    "d": "物理，物理学",
+    "e": "The physics process required strict sterile conditions to avoid contamination."
+   },
+   {
+    "w": "hospital",
+    "p": "n.",
+    "d": "医院",
+    "e": "A hospital of the blood sample confirmed the presence of antibodies."
+   },
+   {
+    "w": "laboratory",
+    "p": "n.",
+    "d": "实验室，研究室",
+    "e": "A laboratory of the virus revealed how it infected host cells."
+   },
+   {
+    "w": "ingredient",
+    "p": "n.",
+    "d": "成分，原料",
+    "e": "The ingredient of the experiment proved the scientist's hypothesis correct."
+   },
+   {
+    "w": "journalist",
+    "p": "n.",
+    "d": " 新闻工作者， 新闻记者",
+    "e": "The journalist research led to groundbreaking medical discoveries."
+   },
+   {
+    "w": "generous",
+    "p": "adj.",
+    "d": "慷慨的",
+    "e": "The generous divided rapidly under the microscope's observation."
+   },
+   {
+    "w": "available",
+    "p": "adj.",
+    "d": " 现成可使用的， 通用的",
+    "e": "A available in the DNA sequence caused a rare genetic disorder."
+   },
+   {
+    "w": "delivery",
+    "p": "n.",
+    "d": "投递",
+    "e": "The delivery of the experiment was carefully recorded in the lab notebook."
+   },
+   {
+    "w": "furnace",
+    "p": "n.",
+    "d": " 炉子， 熔炉， 鼓风炉",
+    "e": "Under the furnace, the cell structure revealed its complex organization."
+   },
+   {
+    "w": "elaborate",
+    "p": "adj.",
+    "d": " 复杂的",
+    "e": "The elaborate process required strict sterile conditions to avoid contamination."
+   },
+   {
+    "w": "internal",
+    "p": "adj.",
+    "d": " 内的",
+    "e": "The internal between the enzyme and substrate was highly specific."
+   },
+   {
+    "w": "audience",
+    "p": "n.",
+    "d": "听众，观众，读者",
+    "e": "Through audience observation, the biologist discovered a new species."
+   },
+   {
+    "w": "contest",
+    "p": "n.",
+    "d": "比赛",
+    "e": "The contest of the disease depended on early diagnosis and treatment."
+   },
+   {
+    "w": "generation",
+    "p": "n.",
+    "d": "一代人，产生",
+    "e": "A generation in the patient's condition required immediate surgery."
+   },
+   {
+    "w": "cellar",
+    "p": "n.",
+    "d": "地窑，地下室",
+    "e": "The cellar therapy targeted the cancer cells without harming healthy tissue."
+   },
+   {
+    "w": "alternative",
+    "p": "adj.",
+    "d": " 两者选一的， 供选择的",
+    "e": "The alternative of the organism adapted to changes in its environment."
+   },
+   {
+    "w": "generate",
+    "p": "v.",
+    "d": "产生",
+    "e": "A generate of the virus revealed how it infected host cells."
+   },
+   {
+    "w": "journal",
+    "p": "n.",
+    "d": " 日报， 杂志， 日志",
+    "e": "The journal of the experiment proved the scientist's hypothesis correct."
+   },
+   {
+    "w": "heterogeneity",
+    "p": "n.",
+    "d": " 异种， 异质， 不同成分",
+    "e": "The heterogeneity research led to groundbreaking medical discoveries."
+   },
+   {
+    "w": "organic",
+    "p": "adj.",
+    "d": " 有机体的， 有机物的",
+    "e": "The organic divided rapidly under the microscope's observation."
+   },
+   {
+    "w": "generator",
+    "p": "n.",
+    "d": " 发电机",
+    "e": "The generator of the experiment was carefully recorded in the lab notebook."
+   },
+   {
+    "w": "deliver",
+    "p": "v.",
+    "d": "发表",
+    "e": "Under the deliver, the cell structure revealed its complex organization."
+   },
+   {
+    "w": "generalization",
+    "p": "n.",
+    "d": "一般化",
+    "e": "A generalization of the blood sample confirmed the presence of antibodies."
+   },
+   {
+    "w": "external",
+    "p": "adj.",
+    "d": " 外部的， 外面的",
+    "e": "The external between the enzyme and substrate was highly specific."
+   },
+   {
+    "w": "excellent",
+    "p": "adj.",
+    "d": "卓越的，杰出的，极好的",
+    "e": "Through excellent observation, the biologist discovered a new species."
+   },
+   {
+    "w": "international",
+    "p": "adj.",
+    "d": "国际的，世界(性)的",
+    "e": "The international of the disease depended on early diagnosis and treatment."
+   },
+   {
+    "w": "birthday",
+    "p": "n.",
+    "d": "生日，诞生的日期",
+    "e": "The birthday therapy targeted the cancer cells without harming healthy tissue."
+   },
+   {
+    "w": "label",
+    "p": "n.",
+    "d": "标签",
+    "e": "The label of the experiment proved the scientist's hypothesis correct."
+   },
+   {
+    "w": "general",
+    "p": "adj.",
+    "d": "总的",
+    "e": "A general in the DNA sequence caused a rare genetic disorder."
+   },
+   {
+    "w": "liver",
+    "p": "n.",
+    "d": "肝",
+    "e": "The liver process required strict sterile conditions to avoid contamination."
+   },
+   {
+    "w": "protest",
+    "p": "v.",
+    "d": "抗议",
+    "e": "A protest of the blood sample confirmed the presence of antibodies."
+   },
+   {
+    "w": "lively",
+    "p": "adj.",
+    "d": "活泼的",
+    "e": "The lively between the enzyme and substrate was highly specific."
+   },
+   {
+    "w": "generosity",
+    "p": "n.",
+    "d": "慷慨，大方",
+    "e": "The generosity of the disease depended on early diagnosis and treatment."
+   },
+   {
+    "w": "measurement",
+    "p": "n.",
+    "d": " 衡量， 测量",
+    "e": "A measurement in the patient's condition required immediate surgery."
+   },
+   {
+    "w": "generic",
+    "p": "adj.",
+    "d": " 【生物】 属的， 类的",
+    "e": "The generic of the organism adapted to changes in its environment."
+   },
+   {
+    "w": "ornament",
+    "p": "n.",
+    "d": "装饰物",
+    "e": "The ornament research led to groundbreaking medical discoveries."
+   }
+  ]
+ }
+};
+
+const DECKS = VOCAB_DATA;
+let currentDeck = null, currentFilter = 'all', quizQueue = [], quizIdx = 0, quizCorrect = 0;
+const MK = 'cet4_domain_mastery';
+
+function getM(){try{return JSON.parse(localStorage.getItem(MK)||'{}')}catch(e){return{}}}
+function setM(m){localStorage.setItem(MK,JSON.stringify(m))}
+function fs(word,deck){const k=deck+':'+word;const m=getM();return {seen:!!m[k],mastered:m[k]==='m'}}
+
+function markMastered(btn,word){
+  const m=getM();m[currentDeck+':'+word]='m';setM(m);
+  btn.innerHTML='\u2713 \u5df2\u638c\u63e1';btn.style.background='rgba(76,175,80,.1)';btn.style.borderColor='#4caf50';btn.style.color='#4caf50';
+  const d=DECKS[currentDeck];const msgs=['Nice!','\u8bb0\u4f4f\u4e86~','\u7a33\u7684'];showToast('\u2b50 '+word+' \u2014 '+msgs[Math.floor(Math.random()*msgs.length)],d.theme+'-msg');
+  setTimeout(renderCards,800);
+}
+function showToast(msg,cls){
+  const t=document.getElementById('toast');t.textContent=msg;t.className='toast '+cls+' show';
+  setTimeout(()=>t.classList.remove('show'),2000);
+}
+
+function init(){AudioSys.init();
+  const grid=document.getElementById('deckGrid');grid.innerHTML='';
+  Object.entries(DECKS).forEach(([k,v])=>{
+    const card=document.createElement('div');
+    card.className=`deck-card ${k}-theme`;
+    card.onclick=()=>openDeck(k);
+    card.innerHTML=`<div class="bg-art">${v.icon}</div><div class="icon">${v.icon}</div><h2>${v.name}</h2><p>${v.desc}</p><span class="count">${v.words.length} 词</span>`;
+    grid.appendChild(card);
+  });
+  setTimeout(()=>document.getElementById('load').classList.add('hide'),600);
+}
+
+function openDeck(deckKey){AudioSys.sfx("enter");AudioSys.playBg(VOCAB_DATA[deckKey].theme);document.getElementById("headerArt").textContent=VOCAB_DATA[deckKey].icon;
+  currentDeck = deckKey;
+  document.getElementById('landing').style.display='none';
+  document.getElementById('game').classList.add('active');
+  document.getElementById('quiz').classList.remove('active');
+  currentFilter='all';
+  document.querySelectorAll('#filterBar .tag').forEach(t=>t.classList.toggle('active',t.dataset.filter==='all'));
+  renderCards();
+}
+
+function backToLanding(){AudioSys.stopBg();
+  document.getElementById('game').classList.remove('active');
+  document.getElementById('quiz').classList.remove('active');
+  document.getElementById('landing').style.display='flex';
+}
+
+function renderCards(){
+  const d = DECKS[currentDeck];
+  const grid = document.getElementById('cardGrid');
+  const cardElements = [];
+  let seen=0,mastered=0;
+  d.words.forEach(w=>{
+    const f = fs(w.w,currentDeck);
+    if(f.mastered)mastered++;
+    if(f.seen)seen++;
+    const pass = currentFilter==='all'||(currentFilter==='new'&&!f.seen)||(currentFilter==='seen'&&f.seen&&!f.mastered)||(currentFilter==='mastered'&&f.mastered);
+    if(!pass)return;
+    cardElements.push({word:w,flipped:f.seen});
+  });
+  grid.innerHTML='';
+  cardElements.forEach(({word:w,flipped:fl})=>{
+    const card=document.createElement('div');
+    card.className=`card-wrap ${d.theme}-card${fl?' flipped':''}`;
+    card.dataset.word=w.w;
+    card.innerHTML=`<div class="card-inner" onclick="toggleCard(this,'${w.w}')">
+      <div class="card-front"><div class="art-bg">${VOCAB_DATA[currentDeck].icon}</div><div class="word">${w.w}</div><div class="pos">${w.p}</div></div>
+      <div class="card-back"><div class="art-pat" style="position:absolute;bottom:8px;left:8px;font-size:1.8rem;opacity:.06;pointer-events:none">${VOCAB_DATA[currentDeck].icon}</div><span class="themed-tag">${d.name}</span><div class="def">${w.d}</div><div class="ex">${w.e.replace(new RegExp(w.w,"gi"),'<u style="text-decoration:underline;text-decoration-color:var(--text2);text-underline-offset:3px">'+w.w+'</u>')}</div><div class="ex-zh" style="font-size:.65rem;color:var(--text2);line-height:1.4;margin-top:2px;padding:0 4px">${w.d}</div><button class="master-btn" onclick="event.stopPropagation();markMastered(this,'${w.w}')" style="display:none;margin-top:5px;background:rgba(187,134,252,.08);border:1px solid rgba(187,134,252,.15);border-radius:6px;padding:3px 12px;font-size:.6rem;cursor:pointer;font-family:inherit;color:#bb86fc;transition:all .3s">&#9733; 掌握</button></div>
+    </div>`;
+    grid.appendChild(card);
+  });
+  document.getElementById('seenCount').textContent='👁️ '+seen;
+  document.getElementById('masteredCount').textContent='⭐ '+mastered;
+  document.getElementById('gameSubtitle').textContent=`已掌握 ${mastered}/${d.words.length}`;
+  const pct = d.words.length?Math.round(mastered/d.words.length*100):0;
+  document.getElementById('progressBar').className=`progress-bar ${d.progressClass}`;
+  document.getElementById('progressFill').style.width=pct+'%';
+}
+
+function toggleCard(el,word){AudioSys.sfx("flip");
+  const wrap=el.closest('.card-wrap');
+  if(wrap.classList.contains('flipped'))return;
+  wrap.classList.add('flipped');
+  const m=getM();
+  m[currentDeck+':'+word]='s';
+  setM(m);
+  renderCards();
+  // ask mastery after short delay
+  setTimeout(()=>{
+    if(confirm(`掌握 "${word}" 了吗？\n「确定」→ ⭐掌握  「取消」→ 仅已阅`)){
+      const m2=getM();
+      m2[currentDeck+':'+word]='m';
+      setM(m2);
+      const d=DECKS[currentDeck];
+      const w=d.words.find(x=>x.w===word);
+      const msgs=['Nice!','记住了～','稳的','可以的','好词','有种！'];
+      showToast('⭐ '+word+' — '+msgs[Math.floor(Math.random()*msgs.length)],d.theme+'-msg');
+      renderCards();
+    }
+  },600);
+}
+
+function setFilter(el,f){
+  currentFilter=f;
+  document.querySelectorAll('#filterBar .tag').forEach(t=>t.classList.toggle('active',t.dataset.filter===f));
+  renderCards();
+}
+
+function shuffleCards(){
+  const grid=document.getElementById('cardGrid');
+  const cards=[...grid.children];
+  for(let i=cards.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));grid.appendChild(cards[j]);}
+}
+
+function flipAll(){
+  document.querySelectorAll('.card-wrap:not(.flipped)').forEach(w=>{
+    w.classList.add('flipped');
+    const m=getM();
+    if(!m[currentDeck+':'+w.dataset.word]){m[currentDeck+':'+w.dataset.word]='s';setM(m);}
+  });
+  setTimeout(renderCards,600);
+}
+
+function resetDeck(){
+  if(!confirm(`重置 "${DECKS[currentDeck].name}" 的全部进度？`))return;
+  const m=getM();
+  Object.keys(m).forEach(k=>{if(k.startsWith(currentDeck+':'))delete m[k]});
+  setM(m);
+  renderCards();
+}
+
+function startQuiz(){
+  const d=DECKS[currentDeck];
+  const m=getM();
+  const pool=d.words.filter(w=>m[currentDeck+':'+w.w]==='m');
+  if(pool.length<4){alert(`至少需要掌握 4 个词才能测试～当前掌握了 ${pool.length} 个`);return;}
+  const shuffled=[...pool].sort(()=>Math.random()-.5);
+  quizQueue=shuffled.slice(0,Math.min(10,shuffled.length));
+  quizIdx=0;quizCorrect=0;
+  document.getElementById('game').classList.remove('active');
+  document.getElementById('quiz').classList.add('active');
+  showQuizQ();
+}
+
+function exitQuiz(){
+  document.getElementById('quiz').classList.remove('active');
+  document.getElementById('game').classList.add('active');
+  renderCards();
+}
+
+function showQuizQ(){
+  const item=quizQueue[quizIdx];
+  if(!item){finishQuiz();return;}
+  document.getElementById('qWord').textContent=item.w;
+  document.getElementById('qPos').textContent=item.p;
+  document.getElementById('quizScore').textContent=quizCorrect+'/'+quizQueue.length;
+  const d=DECKS[currentDeck];
+  let opts=[item.d];
+  const others=d.words.filter(x=>x.w!==item.w).sort(()=>Math.random()-.5);
+  for(let i=0;i<3&&i<others.length;i++)opts.push(others[i].d);
+  opts=opts.sort(()=>Math.random()-.5);
+  const c=document.getElementById('quizOptions');c.innerHTML='';
+  opts.forEach(def=>{
+    const btn=document.createElement('button');
+    btn.textContent=def;
+    btn.onclick=()=>{a(btn,def===item.d)};
+    c.appendChild(btn);
+  });
+  document.getElementById('quizResult').textContent='';
+  document.getElementById('quizNext').style.display='none';
+}
+
+function a(btn,correct){
+  document.querySelectorAll('#quizOptions button').forEach(b=>b.onclick=null);
+  const d=DECKS[currentDeck];
+  if(correct){
+    btn.classList.add('correct');quizCorrect++;
+    document.getElementById('quizResult').innerHTML='✅ 正确！';document.getElementById('quizResult').style.color='var(--dev-green)';
+  } else {
+    btn.classList.add('wrong');
+    const correctDef=d.words.find(w=>w.w===quizQueue[quizIdx].w).d;
+    document.querySelectorAll('#quizOptions button').forEach(b=>{if(b.textContent===correctDef)b.classList.add('correct')});
+    document.getElementById('quizResult').innerHTML='❌ 再想想～正确释义已标绿';document.getElementById('quizResult').style.color='var(--df-red)';
+  }
+  document.getElementById('quizScore').textContent=quizCorrect+'/'+quizQueue.length;
+  document.getElementById('quizNext').style.display='inline-block';
+}
+
+function nextQuiz(){
+  quizIdx++;
+  if(quizIdx>=quizQueue.length){finishQuiz();return;}
+  showQuizQ();
+}
+
+function finishQuiz(){
+  const total=quizQueue.length,pct=Math.round(quizCorrect/total*100);
+  const msg=pct>=80?'🎉 太棒了！':pct>=60?'👍 还不错～':'💪 继续加油！';
+  document.getElementById('qWord').textContent=msg;
+  document.getElementById('qPos').textContent='';
+  document.getElementById('quizOptions').innerHTML='';
+  document.getElementById('quizResult').innerHTML=`<div style="font-size:1.5rem;margin:16px 0">${quizCorrect}/${total} (${pct}%)</div><div style="color:var(--text2);font-size:.9rem">正确率 ${pct}%</div>`;
+  document.getElementById('quizNext').textContent='🔙 返回词库';
+  document.getElementById('quizNext').onclick=exitQuiz;
+  document.getElementById('quizNext').style.display='inline-block';
+}
+
+init();
+</script>
+</body>
+</html>
